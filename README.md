@@ -34,6 +34,8 @@ Output:
 
 ### Huffman Reader and Writer
 
+[![GoDoc](https://godoc.org/github.com/icza/huffman/hufio?status.svg)](https://godoc.org/github.com/icza/huffman/hufio)
+
 The `hufio` package implements a Huffman `Reader` and `Writer`. You may use these to transmit Huffman code of your data.
 
 This `Reader` and `Writer` internally manages a Symbol Table (the frequency of encountered symbols, updated dynamically).
