@@ -2,11 +2,13 @@
 
 [![GoDoc](https://godoc.org/github.com/icza/huffman?status.svg)](https://godoc.org/github.com/icza/huffman)
 
-Huffman coding implementation in Go (Huffman tree, Symbol table, Huffman Reader + Writer).
-
-Use the `Build()` function to build a Huffman tree. Use the `Print()` function to print a Huffman tree (for debugging purposes).
+[Huffman coding](https://en.wikipedia.org/wiki/Huffman_coding) implementation in Go
+(Huffman tree, Symbol table, Huffman Reader + Writer).
 
 ### Huffman Tree
+
+Use the `Build()` function to build a Huffman tree. Use the `Print()` function to print Huffman codes
+of all leaves of a tree (for verification).
 
 Example:
 

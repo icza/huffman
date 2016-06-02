@@ -1,7 +1,33 @@
 /*
 
 Package huffman implements a Huffman entropy coding.
+
 https://en.wikipedia.org/wiki/Huffman_coding
+
+Use the Build() function to build a Huffman tree. Use the Print() function to print Huffman codes
+of all leaves of a tree (for verification).
+
+Example:
+
+	leaves := []*Node{
+		{Value: ' ', Count: 20},
+		{Value: 'a', Count: 40},
+		{Value: 'm', Count: 10},
+		{Value: 'l', Count: 7},
+		{Value: 'f', Count: 8},
+		{Value: 't', Count: 15},
+	}
+	root := Build(leaves)
+	Print(root)
+
+Output:
+
+	'a': 0
+	'm': 100
+	'l': 1010
+	'f': 1011
+	't': 110
+	' ': 111
 
 */
 package huffman
