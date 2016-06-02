@@ -12,8 +12,9 @@ import (
 )
 
 const (
-	newValue huffman.ValueType = 1<<31 - 1 - iota // Value representing a new value
-	eofValue                                      // Value representing end of data
+	newValue  huffman.ValueType = 1<<31 - 1 - iota // Value representing a new value
+	eofValue                                       // Value representing end of data
+	maxValues = 256 + iota                         // Max values: number of bytes + extra values
 )
 
 // symbols manages the symbol table and their frequencies.
@@ -32,7 +33,7 @@ type symbols struct {
 // newSymbols creates a new symbols.
 func newSymbols() *symbols {
 	// initial leaves: 2 nodes (newValue and eofValue) with count=1, and a high capacity
-	leaves := make([]*huffman.Node, 2, 258)
+	leaves := make([]*huffman.Node, 2, maxValues)
 	leaves[0] = &huffman.Node{Value: newValue, Count: 1}
 	leaves[1] = &huffman.Node{Value: eofValue, Count: 1}
 
@@ -41,7 +42,7 @@ func newSymbols() *symbols {
 		valueMap[v.Value] = v
 	}
 
-	s := &symbols{leaves: leaves, valueMap: valueMap, buffer: make([]*huffman.Node, 0, 258)}
+	s := &symbols{leaves: leaves, valueMap: valueMap, buffer: make([]*huffman.Node, 0, maxValues)}
 	// Reader needs the Huffman tree ready right away, so build it:
 	s.rebuildTree()
 
