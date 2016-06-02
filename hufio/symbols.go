@@ -22,6 +22,8 @@ type symbols struct {
 	// Kept sorted by Node.Count, descendant (so new nodes can simply be appended)!
 	leaves []*huffman.Node
 
+	buffer []*huffman.Node // Reusable buffer to pass when building the Huffman tree
+
 	root *huffman.Node // Root of the Huffman tree.
 
 	valueMap map[huffman.ValueType]*huffman.Node // Map from value to Node
@@ -39,7 +41,7 @@ func newSymbols() *symbols {
 		valueMap[v.Value] = v
 	}
 
-	s := &symbols{leaves: leaves, valueMap: valueMap}
+	s := &symbols{leaves: leaves, valueMap: valueMap, buffer: make([]*huffman.Node, 0, 258)}
 	// Reader needs the Huffman tree ready right away, so build it:
 	s.rebuildTree()
 
@@ -91,7 +93,7 @@ func (s *symbols) rebuildTree() {
 	// huffman.BuildSorted() modifies the slice, so make a copy:
 	// leaves is sorted descendant, so fill backward:
 	j := len(s.leaves)
-	ls := make([]*huffman.Node, j)
+	ls := s.buffer[:j]
 	for _, v := range s.leaves {
 		j--
 		ls[j] = v
