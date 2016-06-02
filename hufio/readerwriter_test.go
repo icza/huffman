@@ -41,7 +41,7 @@ func TestRandomBytes(t *testing.T) {
 
 func TestFiles(t *testing.T) {
 	fnames := []string{
-		"wiki_huffman.html",
+		"wiki_huffman.html_",
 		"wiki_huffman.zip",
 	}
 	for _, fname := range fnames {
