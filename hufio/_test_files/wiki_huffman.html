@@ -1,0 +1,1738 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<meta charset="UTF-8"/>
+<title>Huffman coding - Wikipedia, the free encyclopedia</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Huffman_coding","wgTitle":"Huffman coding","wgCurRevisionId":721855632,"wgRevisionId":721855632,"wgArticleId":13883,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Articles lacking in-text citations from January 2011","All articles lacking in-text citations","Wikipedia articles needing clarification from February 2012","Commons category with local link same as on Wikidata","1952 in computer science","Lossless compression algorithms","Binary trees"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Huffman_coding","wgRelevantArticleId":13883,"wgRequestId":"V079WgpAMFsAAB7ddyAAAABA","wgIsProbablyEditable":true,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgWikiEditorEnabledModules":{"toolbar":true,"dialogs":true,"preview":false,"publish":false},"wgBetaFeaturesFeatures":[],"wgMediaViewerOnClick":true,"wgMediaViewerEnabledByDefault":true,"wgVisualEditor":{"pageLanguageCode":"en","pageLanguageDir":"ltr","usePageImages":true,"usePageDescriptions":true},"wgPreferredVariant":"en","wgRelatedArticles":null,"wgRelatedArticlesUseCirrusSearch":true,"wgRelatedArticlesOnlyUseCirrusSearch":false,"wgULSAcceptLanguageList":["en-us","en"],"wgULSCurrentAutonym":"English","wgFlaggedRevsParams":{"tags":{"status":{"levels":1,"quality":2,"pristine":3}}},"wgStableRevisionId":null,"wgCategoryTreePageCategoryOptions":"{\"mode\":0,\"hideprefix\":20,\"showcount\":true,\"namespaces\":false}","wgNoticeProject":"wikipedia","wgCentralNoticeCategoriesUsingLegacy":["Fundraising","fundraising"],"wgWikibaseItemId":"Q2647","wgCentralAuthMobileDomain":false,"wgVisualEditorToolbarScrollOffset":0});mw.loader.implement("user.options",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","ext.centralauth.centralautologin","mmv.head","ext.visualEditor.desktopArticleTarget.init","ext.uls.init","ext.uls.interface","ext.quicksurveys.init","mw.MediaWikiPlayer.loader","mw.PopUpMediaTransform","ext.centralNotice.bannerController","skins.vector.js"]);});</script>
+<link rel="stylesheet" href="/w/load.php?debug=false&amp;lang=en&amp;modules=ext.cite.styles%7Cext.gadget.DRN-wizard%2CReferenceTooltips%2Ccharinsert%2Cfeatured-articles-links%2CrefToolbar%2Cswitcher%2Cteahouse%7Cext.math.styles%7Cext.tmh.thumbnail.styles%7Cext.uls.nojs%7Cext.visualEditor.desktopArticleTarget.noscript%7Cext.wikimediaBadges%7Cmediawiki.legacy.commonPrint%2Cshared%7Cmediawiki.raggett%2CsectionAnchor%7Cmediawiki.skinning.interface%7Cskins.vector.styles%7Cwikibase.client.init&amp;only=styles&amp;skin=vector"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="/w/load.php?debug=false&amp;lang=en&amp;modules=site&amp;only=styles&amp;skin=vector"/>
+<script async="" src="/w/load.php?debug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=vector"></script>
+<meta name="generator" content="MediaWiki 1.28.0-wmf.3"/>
+<meta name="referrer" content="origin-when-cross-origin"/>
+<link rel="alternate" href="android-app://org.wikipedia/http/en.m.wikipedia.org/wiki/Huffman_coding"/>
+<link rel="alternate" type="application/x-wiki" title="Edit this page" href="/w/index.php?title=Huffman_coding&amp;action=edit"/>
+<link rel="edit" title="Edit this page" href="/w/index.php?title=Huffman_coding&amp;action=edit"/>
+<link rel="apple-touch-icon" href="/static/apple-touch/wikipedia.png"/>
+<link rel="shortcut icon" href="/static/favicon/wikipedia.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="/w/opensearch_desc.php" title="Wikipedia (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="//en.wikipedia.org/w/api.php?action=rsd"/>
+<link rel="copyright" href="//creativecommons.org/licenses/by-sa/3.0/"/>
+<link rel="canonical" href="https://en.wikipedia.org/wiki/Huffman_coding"/>
+<link rel="dns-prefetch" href="//meta.wikimedia.org" />
+</head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-Huffman_coding rootpage-Huffman_coding skin-vector action-view">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<div id="content" class="mw-body" role="main">
+			<a id="top"></a>
+
+							<div id="siteNotice"><!-- CentralNotice --></div>
+						<div class="mw-indicators">
+</div>
+			<h1 id="firstHeading" class="firstHeading" lang="en">Huffman coding</h1>
+									<div id="bodyContent" class="mw-body-content">
+									<div id="siteSub">From Wikipedia, the free encyclopedia</div>
+								<div id="contentSub"></div>
+												<div id="jump-to-nav" class="mw-jump">
+					Jump to:					<a href="#mw-head">navigation</a>, 					<a href="#p-search">search</a>
+				</div>
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="metadata plainlinks ambox ambox-style ambox-More_footnotes" role="presentation">
+<tr>
+<td class="mbox-image">
+<div style="width:52px"><img alt="" src="//upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Text_document_with_red_question_mark.svg/40px-Text_document_with_red_question_mark.svg.png" width="40" height="40" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Text_document_with_red_question_mark.svg/60px-Text_document_with_red_question_mark.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Text_document_with_red_question_mark.svg/80px-Text_document_with_red_question_mark.svg.png 2x" data-file-width="48" data-file-height="48" /></div>
+</td>
+<td class="mbox-text"><span class="mbox-text-span">This article includes a <a href="/wiki/Wikipedia:Citing_sources" title="Wikipedia:Citing sources">list of references</a>, but <b>its sources remain unclear</b> because it has <b>insufficient <a href="/wiki/Wikipedia:Citing_sources#Inline_citations" title="Wikipedia:Citing sources">inline citations</a></b>. <span class="hide-when-compact">Please help to <a href="/wiki/Wikipedia:WikiProject_Fact_and_Reference_Check" title="Wikipedia:WikiProject Fact and Reference Check">improve</a> this article by <a href="/wiki/Wikipedia:When_to_cite" title="Wikipedia:When to cite">introducing</a> more precise citations.</span> <small><i>(January 2011)</i></small></span></td>
+</tr>
+</table>
+<div class="thumb tright">
+<div class="thumbinner" style="width:222px;"><a href="/wiki/File:Huffman_tree_2.svg" class="image"><img alt="" src="//upload.wikimedia.org/wikipedia/commons/thumb/8/82/Huffman_tree_2.svg/220px-Huffman_tree_2.svg.png" width="220" height="142" class="thumbimage" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/8/82/Huffman_tree_2.svg/330px-Huffman_tree_2.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/8/82/Huffman_tree_2.svg/440px-Huffman_tree_2.svg.png 2x" data-file-width="625" data-file-height="402" /></a>
+<div class="thumbcaption">
+<div class="magnify"><a href="/wiki/File:Huffman_tree_2.svg" class="internal" title="Enlarge"></a></div>
+Huffman tree generated from the exact frequencies of the text "this is an example of a huffman tree". The frequencies and codes of each character are below. Encoding the sentence with this code requires 135 bits, as opposed to 288 (or 180) bits if 36 characters of 8 (or 5) bits were used. (This assumes that the code tree structure is known to the decoder and thus does not need to be counted as part of the transmitted information.)</div>
+</div>
+</div>
+<table class="wikitable sortable" style="float:right; clear:right;">
+<tr>
+<th>Char</th>
+<th>Freq</th>
+<th>Code</th>
+</tr>
+<tr>
+<td>space</td>
+<td>7</td>
+<td>111</td>
+</tr>
+<tr>
+<td>a</td>
+<td>4</td>
+<td>010</td>
+</tr>
+<tr>
+<td>e</td>
+<td>4</td>
+<td>000</td>
+</tr>
+<tr>
+<td>f</td>
+<td>3</td>
+<td>1101</td>
+</tr>
+<tr>
+<td>h</td>
+<td>2</td>
+<td>1010</td>
+</tr>
+<tr>
+<td>i</td>
+<td>2</td>
+<td>1000</td>
+</tr>
+<tr>
+<td>m</td>
+<td>2</td>
+<td>0111</td>
+</tr>
+<tr>
+<td>n</td>
+<td>2</td>
+<td>0010</td>
+</tr>
+<tr>
+<td>s</td>
+<td>2</td>
+<td>1011</td>
+</tr>
+<tr>
+<td>t</td>
+<td>2</td>
+<td>0110</td>
+</tr>
+<tr>
+<td>l</td>
+<td>1</td>
+<td>11001</td>
+</tr>
+<tr>
+<td>o</td>
+<td>1</td>
+<td>00110</td>
+</tr>
+<tr>
+<td>p</td>
+<td>1</td>
+<td>10011</td>
+</tr>
+<tr>
+<td>r</td>
+<td>1</td>
+<td>11000</td>
+</tr>
+<tr>
+<td>u</td>
+<td>1</td>
+<td>00111</td>
+</tr>
+<tr>
+<td>x</td>
+<td>1</td>
+<td>10010</td>
+</tr>
+</table>
+<p>In <a href="/wiki/Computer_science" title="Computer science">computer science</a> and <a href="/wiki/Information_theory" title="Information theory">information theory</a>, a <b>Huffman code</b> is a particular type of optimal <a href="/wiki/Prefix_code" title="Prefix code">prefix code</a> that is commonly used for <a href="/wiki/Lossless_data_compression" title="Lossless data compression" class="mw-redirect">lossless data compression</a>. The process of finding and/or using such a code proceeds by means of <b>Huffman coding</b>, an algorithm developed by <a href="/wiki/David_A._Huffman" title="David A. Huffman">David A. Huffman</a> while he was a <a href="/wiki/Doctor_of_Philosophy" title="Doctor of Philosophy">Ph.D.</a> student at <a href="/wiki/Massachusetts_Institute_of_Technology" title="Massachusetts Institute of Technology">MIT</a>, and published in the 1952 paper "A Method for the Construction of Minimum-Redundancy Codes".<sup id="cite_ref-1" class="reference"><a href="#cite_note-1">[1]</a></sup></p>
+<p>The output from Huffman's algorithm can be viewed as a <a href="/wiki/Variable-length_code" title="Variable-length code">variable-length code</a> table for encoding a source symbol (such as a character in a file). The algorithm derives this table from the estimated probability or frequency of occurrence (<i>weight</i>) for each possible value of the source symbol. As in other <a href="/wiki/Entropy_encoding" title="Entropy encoding">entropy encoding</a> methods, more common symbols are generally represented using fewer bits than less common symbols. Huffman's method can be efficiently implemented, finding a code in <a href="/wiki/Linear_time" title="Linear time" class="mw-redirect">linear time</a> to the number of input weights if these weights are sorted.<sup id="cite_ref-2" class="reference"><a href="#cite_note-2">[2]</a></sup> However, although optimal among methods encoding symbols separately, Huffman coding is not always optimal among all compression methods.</p>
+<p></p>
+<div id="toc" class="toc">
+<div id="toctitle">
+<h2>Contents</h2>
+</div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#History"><span class="tocnumber">1</span> <span class="toctext">History</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Terminology"><span class="tocnumber">2</span> <span class="toctext">Terminology</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Problem_definition"><span class="tocnumber">3</span> <span class="toctext">Problem definition</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="#Informal_description"><span class="tocnumber">3.1</span> <span class="toctext">Informal description</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="#Formalized_description"><span class="tocnumber">3.2</span> <span class="toctext">Formalized description</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="#Example"><span class="tocnumber">3.3</span> <span class="toctext">Example</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-7"><a href="#Basic_technique"><span class="tocnumber">4</span> <span class="toctext">Basic technique</span></a>
+<ul>
+<li class="toclevel-2 tocsection-8"><a href="#Compression"><span class="tocnumber">4.1</span> <span class="toctext">Compression</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="#Decompression"><span class="tocnumber">4.2</span> <span class="toctext">Decompression</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-10"><a href="#Main_properties"><span class="tocnumber">5</span> <span class="toctext">Main properties</span></a>
+<ul>
+<li class="toclevel-2 tocsection-11"><a href="#Optimality"><span class="tocnumber">5.1</span> <span class="toctext">Optimality</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-12"><a href="#Variations"><span class="tocnumber">6</span> <span class="toctext">Variations</span></a>
+<ul>
+<li class="toclevel-2 tocsection-13"><a href="#n-ary_Huffman_coding"><span class="tocnumber">6.1</span> <span class="toctext"><i>n</i>-ary Huffman coding</span></a></li>
+<li class="toclevel-2 tocsection-14"><a href="#Adaptive_Huffman_coding"><span class="tocnumber">6.2</span> <span class="toctext">Adaptive Huffman coding</span></a></li>
+<li class="toclevel-2 tocsection-15"><a href="#Huffman_template_algorithm"><span class="tocnumber">6.3</span> <span class="toctext">Huffman template algorithm</span></a></li>
+<li class="toclevel-2 tocsection-16"><a href="#Length-limited_Huffman_coding.2Fminimum_variance_Huffman_coding"><span class="tocnumber">6.4</span> <span class="toctext">Length-limited Huffman coding/minimum variance Huffman coding</span></a></li>
+<li class="toclevel-2 tocsection-17"><a href="#Huffman_coding_with_unequal_letter_costs"><span class="tocnumber">6.5</span> <span class="toctext">Huffman coding with unequal letter costs</span></a></li>
+<li class="toclevel-2 tocsection-18"><a href="#Optimal_alphabetic_binary_trees_.28Hu.E2.80.93Tucker_coding.29"><span class="tocnumber">6.6</span> <span class="toctext">Optimal alphabetic binary trees (Hu–Tucker coding)</span></a></li>
+<li class="toclevel-2 tocsection-19"><a href="#The_canonical_Huffman_code"><span class="tocnumber">6.7</span> <span class="toctext">The canonical Huffman code</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-20"><a href="#Applications"><span class="tocnumber">7</span> <span class="toctext">Applications</span></a></li>
+<li class="toclevel-1 tocsection-21"><a href="#See_also"><span class="tocnumber">8</span> <span class="toctext">See also</span></a></li>
+<li class="toclevel-1 tocsection-22"><a href="#Notes"><span class="tocnumber">9</span> <span class="toctext">Notes</span></a></li>
+<li class="toclevel-1 tocsection-23"><a href="#External_links"><span class="tocnumber">10</span> <span class="toctext">External links</span></a></li>
+<li class="toclevel-1 tocsection-24"><a href="#References"><span class="tocnumber">11</span> <span class="toctext">References</span></a></li>
+</ul>
+</div>
+<p></p>
+<h2><span class="mw-headline" id="History">History</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Huffman_coding&amp;action=edit&amp;section=1" title="Edit section: History">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>In 1951, <a href="/wiki/David_A._Huffman" title="David A. Huffman">David A. Huffman</a> and his <a href="/wiki/MIT" title="MIT" class="mw-redirect">MIT</a> <a href="/wiki/Information_theory" title="Information theory">information theory</a> classmates were given the choice of a term paper or a final <a href="/wiki/Exam" title="Exam" class="mw-redirect">exam</a>. The professor, <a href="/wiki/Robert_M._Fano" title="Robert M. Fano" class="mw-redirect">Robert M. Fano</a>, assigned a <a href="/wiki/Term_paper" title="Term paper">term paper</a> on the problem of finding the most efficient binary code. Huffman, unable to prove any codes were the most efficient, was about to give up and start studying for the final when he hit upon the idea of using a frequency-sorted <a href="/wiki/Binary_tree" title="Binary tree">binary tree</a> and quickly proved this method the most efficient.<sup id="cite_ref-3" class="reference"><a href="#cite_note-3">[3]</a></sup></p>
+<p>In doing so, Huffman outdid Fano, who had worked with <a href="/wiki/Information_theory" title="Information theory">information theory</a> inventor <a href="/wiki/Claude_Shannon" title="Claude Shannon">Claude Shannon</a> to develop a similar code. By building the tree from the bottom up instead of the top down, Huffman avoided the major flaw of the suboptimal <a href="/wiki/Shannon-Fano_coding" title="Shannon-Fano coding" class="mw-redirect">Shannon-Fano coding</a>.</p>
+<h2><span class="mw-headline" id="Terminology">Terminology</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Huffman_coding&amp;action=edit&amp;section=2" title="Edit section: Terminology">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>Huffman coding uses a specific method for choosing the representation for each symbol, resulting in a prefix code (sometimes called "prefix-free codes", that is, the bit string representing some particular symbol is never a prefix of the bit string representing any other symbol). Huffman coding is such a widespread method for creating prefix codes that the term "Huffman code" is widely used as a synonym for "prefix code" even when such a code is not produced by Huffman's algorithm.</p>
+<h2><span class="mw-headline" id="Problem_definition">Problem definition</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Huffman_coding&amp;action=edit&amp;section=3" title="Edit section: Problem definition">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<div class="thumb tright">
+<div class="thumbinner" style="width:222px;"><a href="/wiki/File:HuffmanCodeAlg.png" class="image"><img alt="" src="//upload.wikimedia.org/wikipedia/commons/thumb/d/d8/HuffmanCodeAlg.png/220px-HuffmanCodeAlg.png" width="220" height="337" class="thumbimage" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/d/d8/HuffmanCodeAlg.png/330px-HuffmanCodeAlg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/d/d8/HuffmanCodeAlg.png/440px-HuffmanCodeAlg.png 2x" data-file-width="496" data-file-height="759" /></a>
+<div class="thumbcaption">
+<div class="magnify"><a href="/wiki/File:HuffmanCodeAlg.png" class="internal" title="Enlarge"></a></div>
+Constructing a Huffman Tree</div>
+</div>
+</div>
+<h3><span class="mw-headline" id="Informal_description">Informal description</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Huffman_coding&amp;action=edit&amp;section=4" title="Edit section: Informal description">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<dl>
+<dt>Given</dt>
+<dd>A set of symbols and their weights (usually <a href="/wiki/Proportionality_(mathematics)" title="Proportionality (mathematics)">proportional</a> to probabilities).</dd>
+<dt>Find</dt>
+<dd>A <a href="/wiki/Prefix_code" title="Prefix code">prefix-free binary code</a> (a set of codewords) with minimum <a href="/wiki/Expected_value" title="Expected value">expected</a> codeword length (equivalently, a tree with minimum <a href="/w/index.php?title=Weighted_path_length_from_the_root&amp;action=edit&amp;redlink=1" class="new" title="Weighted path length from the root (page does not exist)">weighted path length from the root</a>).</dd>
+</dl>
+<h3><span class="mw-headline" id="Formalized_description">Formalized description</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Huffman_coding&amp;action=edit&amp;section=5" title="Edit section: Formalized description">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p><b>Input</b>.<br />
+Alphabet <span><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" >
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>A</mi>
+        <mo>=</mo>
+        <mrow>
+          <mo>{</mo>
+          <msub>
+            <mi>a</mi>
+            <mrow class="MJX-TeXAtom-ORD">
+              <mn>1</mn>
+            </mrow>
+          </msub>
+          <mo>,</mo>
+          <msub>
+            <mi>a</mi>
+            <mrow class="MJX-TeXAtom-ORD">
+              <mn>2</mn>
+            </mrow>
+          </msub>
+          <mo>,</mo>
+          <mo>&#x22EF;<!-- ⋯ --></mo>
+          <mo>,</mo>
+          <msub>
+            <mi>a</mi>
+            <mrow class="MJX-TeXAtom-ORD">
+              <mi>n</mi>
+            </mrow>
+          </msub>
+          <mo>}</mo>
+        </mrow>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle A=\left\{a_{1},a_{2},\cdots ,a_{n}\right\}}</annotation>
+  </semantics>
+</math></span><meta class="mwe-math-fallback-image-inline" aria-hidden="true" style="background-image: url(&#039;https://en.wikipedia.org/api/rest_v1/media/math/render/svg/cf531e3f18fc961e191f55398427cbde12a8afb2&#039;); background-repeat: no-repeat; background-size: 100% 100%; vertical-align: -0.838ex; width:20.532ex; height:2.843ex;" /></span>, which is the symbol alphabet of size <span><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" >
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>n</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle n}</annotation>
+  </semantics>
+</math></span><meta class="mwe-math-fallback-image-inline" aria-hidden="true" style="background-image: url(&#039;https://en.wikipedia.org/api/rest_v1/media/math/render/svg/a601995d55609f2d9f5e233e36fbe9ea26011b3b&#039;); background-repeat: no-repeat; background-size: 100% 100%; vertical-align: -0.338ex; width:1.405ex; height:1.676ex;" /></span>.<br />
+Set <span><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" >
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>W</mi>
+        <mo>=</mo>
+        <mrow>
+          <mo>{</mo>
+          <msub>
+            <mi>w</mi>
+            <mrow class="MJX-TeXAtom-ORD">
+              <mn>1</mn>
+            </mrow>
+          </msub>
+          <mo>,</mo>
+          <msub>
+            <mi>w</mi>
+            <mrow class="MJX-TeXAtom-ORD">
+              <mn>2</mn>
+            </mrow>
+          </msub>
+          <mo>,</mo>
+          <mo>&#x22EF;<!-- ⋯ --></mo>
+          <mo>,</mo>
+          <msub>
+            <mi>w</mi>
+            <mrow class="MJX-TeXAtom-ORD">
+              <mi>n</mi>
+            </mrow>
+          </msub>
+          <mo>}</mo>
+        </mrow>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle W=\left\{w_{1},w_{2},\cdots ,w_{n}\right\}}</annotation>
+  </semantics>
+</math></span><meta class="mwe-math-fallback-image-inline" aria-hidden="true" style="background-image: url(&#039;https://en.wikipedia.org/api/rest_v1/media/math/render/svg/096989a9e7afc2d0511ba0a256961f71e42eed5e&#039;); background-repeat: no-repeat; background-size: 100% 100%; vertical-align: -0.838ex; width:22.527ex; height:2.843ex;" /></span>, which is the set of the (positive) symbol weights (usually proportional to probabilities), i.e. <span><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" >
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <msub>
+          <mi>w</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>i</mi>
+          </mrow>
+        </msub>
+        <mo>=</mo>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mi mathvariant="normal">w</mi>
+          <mi mathvariant="normal">e</mi>
+          <mi mathvariant="normal">i</mi>
+          <mi mathvariant="normal">g</mi>
+          <mi mathvariant="normal">h</mi>
+          <mi mathvariant="normal">t</mi>
+        </mrow>
+        <mrow>
+          <mo>(</mo>
+          <msub>
+            <mi>a</mi>
+            <mrow class="MJX-TeXAtom-ORD">
+              <mi>i</mi>
+            </mrow>
+          </msub>
+          <mo>)</mo>
+        </mrow>
+        <mo>,</mo>
+        <mn>1</mn>
+        <mo>&#x2264;<!-- ≤ --></mo>
+        <mi>i</mi>
+        <mo>&#x2264;<!-- ≤ --></mo>
+        <mi>n</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle w_{i}=\mathrm {weight} \left(a_{i}\right),1\leq i\leq n}</annotation>
+  </semantics>
+</math></span><meta class="mwe-math-fallback-image-inline" aria-hidden="true" style="background-image: url(&#039;https://en.wikipedia.org/api/rest_v1/media/math/render/svg/1ac240d6b18d1cfc65347a605c575bc2b9735e2b&#039;); background-repeat: no-repeat; background-size: 100% 100%; vertical-align: -0.838ex; width:27.675ex; height:2.843ex;" /></span>.<br />
+<br />
+<b>Output</b>.<br />
+Code <span><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" >
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>C</mi>
+        <mrow>
+          <mo>(</mo>
+          <mi>A</mi>
+          <mo>,</mo>
+          <mi>W</mi>
+          <mo>)</mo>
+        </mrow>
+        <mo>=</mo>
+        <mo stretchy="false">(</mo>
+        <msub>
+          <mi>c</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>1</mn>
+          </mrow>
+        </msub>
+        <mo>,</mo>
+        <msub>
+          <mi>c</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>2</mn>
+          </mrow>
+        </msub>
+        <mo>,</mo>
+        <mo>&#x22EF;<!-- ⋯ --></mo>
+        <mo>,</mo>
+        <msub>
+          <mi>c</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>n</mi>
+          </mrow>
+        </msub>
+        <mo stretchy="false">)</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle C\left(A,W\right)=(c_{1},c_{2},\cdots ,c_{n})}</annotation>
+  </semantics>
+</math></span><meta class="mwe-math-fallback-image-inline" aria-hidden="true" style="background-image: url(&#039;https://en.wikipedia.org/api/rest_v1/media/math/render/svg/88c63c3ebc3618bf7b24d38d2a19ecc13c8c06aa&#039;); background-repeat: no-repeat; background-size: 100% 100%; vertical-align: -0.838ex; width:26.832ex; height:2.843ex;" /></span>, which is the tuple of (binary) codewords, where <span><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" >
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <msub>
+          <mi>c</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>i</mi>
+          </mrow>
+        </msub>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle c_{i}}</annotation>
+  </semantics>
+</math></span><meta class="mwe-math-fallback-image-inline" aria-hidden="true" style="background-image: url(&#039;https://en.wikipedia.org/api/rest_v1/media/math/render/svg/01acb7953ba52c2aa44264b5d0f8fd223aa178a2&#039;); background-repeat: no-repeat; background-size: 100% 100%; vertical-align: -0.671ex; width:1.824ex; height:2.009ex;" /></span> is the codeword for <span><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" >
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <msub>
+          <mi>a</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>i</mi>
+          </mrow>
+        </msub>
+        <mo>,</mo>
+        <mn>1</mn>
+        <mo>&#x2264;<!-- ≤ --></mo>
+        <mi>i</mi>
+        <mo>&#x2264;<!-- ≤ --></mo>
+        <mi>n</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle a_{i},1\leq i\leq n}</annotation>
+  </semantics>
+</math></span><meta class="mwe-math-fallback-image-inline" aria-hidden="true" style="background-image: url(&#039;https://en.wikipedia.org/api/rest_v1/media/math/render/svg/a94e97768b8a85bb80a5ab67289276413007898a&#039;); background-repeat: no-repeat; background-size: 100% 100%; vertical-align: -0.671ex; width:12.701ex; height:2.509ex;" /></span>.<br />
+<br />
+<b>Goal</b>.<br />
+Let <span><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" >
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>L</mi>
+        <mrow>
+          <mo>(</mo>
+          <mi>C</mi>
+          <mo>)</mo>
+        </mrow>
+        <mo>=</mo>
+        <munderover>
+          <mo>&#x2211;<!-- ∑ --></mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>i</mi>
+            <mo>=</mo>
+            <mn>1</mn>
+          </mrow>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>n</mi>
+          </mrow>
+        </munderover>
+        <mrow class="MJX-TeXAtom-ORD">
+          <msub>
+            <mi>w</mi>
+            <mrow class="MJX-TeXAtom-ORD">
+              <mi>i</mi>
+            </mrow>
+          </msub>
+          <mo>&#x00D7;<!-- × --></mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi mathvariant="normal">l</mi>
+            <mi mathvariant="normal">e</mi>
+            <mi mathvariant="normal">n</mi>
+            <mi mathvariant="normal">g</mi>
+            <mi mathvariant="normal">t</mi>
+            <mi mathvariant="normal">h</mi>
+          </mrow>
+          <mrow>
+            <mo>(</mo>
+            <msub>
+              <mi>c</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mi>i</mi>
+              </mrow>
+            </msub>
+            <mo>)</mo>
+          </mrow>
+        </mrow>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle L\left(C\right)=\sum _{i=1}^{n}{w_{i}\times \mathrm {length} \left(c_{i}\right)}}</annotation>
+  </semantics>
+</math></span><meta class="mwe-math-fallback-image-inline" aria-hidden="true" style="background-image: url(&#039;https://en.wikipedia.org/api/rest_v1/media/math/render/svg/96af5929e5951621f26b08353e1072fb2f884524&#039;); background-repeat: no-repeat; background-size: 100% 100%; vertical-align: -3.005ex; width:28.217ex; height:7.009ex;" /></span> be the weighted path length of code <span><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" >
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>C</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle C}</annotation>
+  </semantics>
+</math></span><meta class="mwe-math-fallback-image-inline" aria-hidden="true" style="background-image: url(&#039;https://en.wikipedia.org/api/rest_v1/media/math/render/svg/4fc55753007cd3c18576f7933f6f089196732029&#039;); background-repeat: no-repeat; background-size: 100% 100%; vertical-align: -0.338ex; width:1.777ex; height:2.176ex;" /></span>. Condition: <span><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" >
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>L</mi>
+        <mrow>
+          <mo>(</mo>
+          <mi>C</mi>
+          <mo>)</mo>
+        </mrow>
+        <mo>&#x2264;<!-- ≤ --></mo>
+        <mi>L</mi>
+        <mrow>
+          <mo>(</mo>
+          <mi>T</mi>
+          <mo>)</mo>
+        </mrow>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle L\left(C\right)\leq L\left(T\right)}</annotation>
+  </semantics>
+</math></span><meta class="mwe-math-fallback-image-inline" aria-hidden="true" style="background-image: url(&#039;https://en.wikipedia.org/api/rest_v1/media/math/render/svg/6e6665e9af506721382168d97210f1ae13d39a40&#039;); background-repeat: no-repeat; background-size: 100% 100%; vertical-align: -0.838ex; width:14.154ex; height:2.843ex;" /></span> for any code <span><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" >
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>T</mi>
+        <mrow>
+          <mo>(</mo>
+          <mi>A</mi>
+          <mo>,</mo>
+          <mi>W</mi>
+          <mo>)</mo>
+        </mrow>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle T\left(A,W\right)}</annotation>
+  </semantics>
+</math></span><meta class="mwe-math-fallback-image-inline" aria-hidden="true" style="background-image: url(&#039;https://en.wikipedia.org/api/rest_v1/media/math/render/svg/729737cd4ffa7a257ff62518f04a3bcf8efa7b11&#039;); background-repeat: no-repeat; background-size: 100% 100%; vertical-align: -0.838ex; width:9.108ex; height:2.843ex;" /></span>.</p>
+<h3><span class="mw-headline" id="Example">Example</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Huffman_coding&amp;action=edit&amp;section=6" title="Edit section: Example">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>We give an example of the result of Huffman coding for a code with five characters and given weights. We will not verify that it minimizes <i>L</i> over all codes, but we will compute <i>L</i> and compare it to the <a href="/wiki/Shannon_entropy" title="Shannon entropy" class="mw-redirect">Shannon entropy</a> <i>H</i> of the given set of weights; the result is nearly optimal.</p>
+<table class="wikitable">
+<tr>
+<th rowspan="2" style="background:#efefef">Input (<i>A</i>, <i>W</i>)</th>
+<th style="background:#efefef;font-weight:normal">Symbol (<i>a</i><sub><i>i</i></sub>)</th>
+<td align="center" style="background:#efefef">a</td>
+<td align="center" style="background:#efefef">b</td>
+<td align="center" style="background:#efefef">c</td>
+<td align="center" style="background:#efefef">d</td>
+<td align="center" style="background:#efefef">e</td>
+<th style="background:#efefef">Sum</th>
+</tr>
+<tr>
+<th style="background:#efefef;font-weight:normal">Weights (<i>w</i><sub><i>i</i></sub>)</th>
+<td align="center">0.10</td>
+<td align="center">0.15</td>
+<td align="center">0.30</td>
+<td align="center">0.16</td>
+<td align="center">0.29</td>
+<td align="center">= 1</td>
+</tr>
+<tr>
+<th rowspan="3" style="background:#efefef">Output <i>C</i></th>
+<th style="background:#efefef;font-weight:normal">Codewords (<i>c</i><sub><i>i</i></sub>)</th>
+<td align="center"><tt>010</tt></td>
+<td align="center"><tt>011</tt></td>
+<td align="center"><tt>11</tt></td>
+<td align="center"><tt>00</tt></td>
+<td align="center"><tt>10</tt></td>
+<td rowspan="2">&#160;</td>
+</tr>
+<tr>
+<th style="background:#efefef;font-weight:normal">Codeword length (in bits)<br />
+(<i>l</i><sub><i>i</i></sub>)</th>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<th style="background:#efefef;font-weight:normal">Contribution to weighted path length<br />
+(<i>l</i><sub><i>i</i></sub> <i>w</i><sub><i>i</i></sub> )</th>
+<td align="center">0.30</td>
+<td align="center">0.45</td>
+<td align="center">0.60</td>
+<td align="center">0.32</td>
+<td align="center">0.58</td>
+<td align="center"><i>L</i>(<i>C</i>) = 2.25</td>
+</tr>
+<tr>
+<th rowspan="3" style="background:#efefef">Optimality</th>
+<th style="background:#efefef;font-weight:normal">Probability budget<br />
+(2<sup>−<i>l</i><sub><i>i</i></sub></sup>)</th>
+<td align="center">1/8</td>
+<td align="center">1/8</td>
+<td align="center">1/4</td>
+<td align="center">1/4</td>
+<td align="center">1/4</td>
+<td align="center">= 1.00</td>
+</tr>
+<tr>
+<th style="background: #efefef; font-weight: normal;">Information content (in bits)<br />
+(−<b>log</b><sub>2</sub> <i>w</i><sub><i>i</i></sub>) ≈</th>
+<td align="center">3.32</td>
+<td align="center">2.74</td>
+<td align="center">1.74</td>
+<td align="center">2.64</td>
+<td align="center">1.79</td>
+<td align="center">&#160;</td>
+</tr>
+<tr>
+<th style="background: #efefef; font-weight: normal;">Contribution to entropy<br />
+(−<i>w</i><sub><i>i</i></sub> <b>log</b><sub>2</sub> <i>w</i><sub><i>i</i></sub>)</th>
+<td align="center">0.332</td>
+<td align="center">0.411</td>
+<td align="center">0.521</td>
+<td align="center">0.423</td>
+<td align="center">0.518</td>
+<td align="center"><i>H</i>(<i>A</i>) = 2.205</td>
+</tr>
+</table>
+<p>For any code that is <i>biunique</i>, meaning that the code is <a href="/wiki/Variable-length_code#Uniquely_decodable_codes" title="Variable-length code"><i>uniquely decodeable</i></a>, the sum of the probability budgets across all symbols is always less than or equal to one. In this example, the sum is strictly equal to one; as a result, the code is termed a <i>complete</i> code. If this is not the case, you can always derive an equivalent code by adding extra symbols (with associated null probabilities), to make the code complete while keeping it <i>biunique</i>.</p>
+<p>As defined by <a href="/wiki/A_Mathematical_Theory_of_Communication" title="A Mathematical Theory of Communication">Shannon (1948)</a>, the information content <i>h</i> (in bits) of each symbol <i>a</i><sub>i</sub> with non-null probability is</p>
+<dl>
+<dd><span><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" >
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>h</mi>
+        <mo stretchy="false">(</mo>
+        <msub>
+          <mi>a</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>i</mi>
+          </mrow>
+        </msub>
+        <mo stretchy="false">)</mo>
+        <mo>=</mo>
+        <msub>
+          <mi>log</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>2</mn>
+          </mrow>
+        </msub>
+        <mo>&#x2061;<!-- ⁡ --></mo>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mfrac>
+            <mn>1</mn>
+            <msub>
+              <mi>w</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mi>i</mi>
+              </mrow>
+            </msub>
+          </mfrac>
+        </mrow>
+        <mo>.</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle h(a_{i})=\log _{2}{1 \over w_{i}}.}</annotation>
+  </semantics>
+</math></span><meta class="mwe-math-fallback-image-inline" aria-hidden="true" style="background-image: url(&#039;https://en.wikipedia.org/api/rest_v1/media/math/render/svg/2799f589d23a9f11345131ef8cef9937c5e7c456&#039;); background-repeat: no-repeat; background-size: 100% 100%; vertical-align: -2.171ex; width:16.763ex; height:5.509ex;" /></span></dd>
+</dl>
+<p>The <a href="/wiki/Information_entropy" title="Information entropy" class="mw-redirect">entropy</a> <i>H</i> (in bits) is the weighted sum, across all symbols <i>a</i><sub><i>i</i></sub> with non-zero probability <i>w</i><sub><i>i</i></sub>, of the information content of each symbol:</p>
+<dl>
+<dd><span><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" >
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>H</mi>
+        <mo stretchy="false">(</mo>
+        <mi>A</mi>
+        <mo stretchy="false">)</mo>
+        <mo>=</mo>
+        <munder>
+          <mo>&#x2211;<!-- ∑ --></mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <msub>
+              <mi>w</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mi>i</mi>
+              </mrow>
+            </msub>
+            <mo>&gt;</mo>
+            <mn>0</mn>
+          </mrow>
+        </munder>
+        <msub>
+          <mi>w</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>i</mi>
+          </mrow>
+        </msub>
+        <mi>h</mi>
+        <mo stretchy="false">(</mo>
+        <msub>
+          <mi>a</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>i</mi>
+          </mrow>
+        </msub>
+        <mo stretchy="false">)</mo>
+        <mo>=</mo>
+        <munder>
+          <mo>&#x2211;<!-- ∑ --></mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <msub>
+              <mi>w</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mi>i</mi>
+              </mrow>
+            </msub>
+            <mo>&gt;</mo>
+            <mn>0</mn>
+          </mrow>
+        </munder>
+        <msub>
+          <mi>w</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>i</mi>
+          </mrow>
+        </msub>
+        <msub>
+          <mi>log</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>2</mn>
+          </mrow>
+        </msub>
+        <mo>&#x2061;<!-- ⁡ --></mo>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mfrac>
+            <mn>1</mn>
+            <msub>
+              <mi>w</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mi>i</mi>
+              </mrow>
+            </msub>
+          </mfrac>
+        </mrow>
+        <mo>=</mo>
+        <mo>&#x2212;<!-- − --></mo>
+        <munder>
+          <mo>&#x2211;<!-- ∑ --></mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <msub>
+              <mi>w</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mi>i</mi>
+              </mrow>
+            </msub>
+            <mo>&gt;</mo>
+            <mn>0</mn>
+          </mrow>
+        </munder>
+        <msub>
+          <mi>w</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>i</mi>
+          </mrow>
+        </msub>
+        <msub>
+          <mi>log</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>2</mn>
+          </mrow>
+        </msub>
+        <mo>&#x2061;<!-- ⁡ --></mo>
+        <mrow class="MJX-TeXAtom-ORD">
+          <msub>
+            <mi>w</mi>
+            <mrow class="MJX-TeXAtom-ORD">
+              <mi>i</mi>
+            </mrow>
+          </msub>
+        </mrow>
+        <mo>.</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle H(A)=\sum _{w_{i}&gt;0}w_{i}h(a_{i})=\sum _{w_{i}&gt;0}w_{i}\log _{2}{1 \over w_{i}}=-\sum _{w_{i}&gt;0}w_{i}\log _{2}{w_{i}}.}</annotation>
+  </semantics>
+</math></span><meta class="mwe-math-fallback-image-inline" aria-hidden="true" style="background-image: url(&#039;https://en.wikipedia.org/api/rest_v1/media/math/render/svg/1be32c5fb44ffa0961a0cf1d506e0bca05c7c3eb&#039;); background-repeat: no-repeat; background-size: 100% 100%; vertical-align: -3.338ex; width:58.949ex; height:6.676ex;" /></span></dd>
+</dl>
+<p>(Note: A symbol with zero probability has zero contribution to the entropy, since <span><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" >
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <munder>
+          <mo movablelimits="true" form="prefix">lim</mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>w</mi>
+            <mo stretchy="false">&#x2192;<!-- → --></mo>
+            <msup>
+              <mn>0</mn>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mo>+</mo>
+              </mrow>
+            </msup>
+          </mrow>
+        </munder>
+        <mi>w</mi>
+        <msub>
+          <mi>log</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>2</mn>
+          </mrow>
+        </msub>
+        <mo>&#x2061;<!-- ⁡ --></mo>
+        <mi>w</mi>
+        <mo>=</mo>
+        <mn>0</mn>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \lim _{w\to 0^{+}}w\log _{2}w=0}</annotation>
+  </semantics>
+</math></span><meta class="mwe-math-fallback-image-inline" aria-hidden="true" style="background-image: url(&#039;https://en.wikipedia.org/api/rest_v1/media/math/render/svg/a25181e71e7e86ccfe31ba981214e6b31f57e7c8&#039;); background-repeat: no-repeat; background-size: 100% 100%; vertical-align: -2.338ex; width:17.729ex; height:4.176ex;" /></span> So for simplicity, symbols with zero probability can be left out of the formula above.)</p>
+<p>As a consequence of <a href="/wiki/Shannon%27s_source_coding_theorem" title="Shannon's source coding theorem">Shannon's source coding theorem</a>, the entropy is a measure of the smallest codeword length that is theoretically possible for the given alphabet with associated weights. In this example, the weighted average codeword length is 2.25 bits per symbol, only slightly larger than the calculated entropy of 2.205 bits per symbol. So not only is this code optimal in the sense that no other feasible code performs better, but it is very close to the theoretical limit established by Shannon.</p>
+<p>In general, a Huffman code need not be unique. Thus the set of Huffman codes for a given probability distribution is a non-empty subset of the codes minimizing <span><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" >
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>L</mi>
+        <mo stretchy="false">(</mo>
+        <mi>C</mi>
+        <mo stretchy="false">)</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle L(C)}</annotation>
+  </semantics>
+</math></span><meta class="mwe-math-fallback-image-inline" aria-hidden="true" style="background-image: url(&#039;https://en.wikipedia.org/api/rest_v1/media/math/render/svg/f31c05759c645f617ea0ef5952ea24ccef557716&#039;); background-repeat: no-repeat; background-size: 100% 100%; vertical-align: -0.838ex; width:5.2ex; height:2.843ex;" /></span> for that probability distribution. (However, for each minimizing codeword length assignment, there exists at least one Huffman code with those lengths.)</p>
+<h2><span class="mw-headline" id="Basic_technique">Basic technique</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Huffman_coding&amp;action=edit&amp;section=7" title="Edit section: Basic technique">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<h3><span class="mw-headline" id="Compression">Compression</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Huffman_coding&amp;action=edit&amp;section=8" title="Edit section: Compression">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<div class="thumb tright">
+<div class="thumbinner" style="width:222px;"><a href="/wiki/File:Huffman_coding_example.svg" class="image"><img alt="" src="//upload.wikimedia.org/wikipedia/commons/thumb/7/74/Huffman_coding_example.svg/220px-Huffman_coding_example.svg.png" width="220" height="106" class="thumbimage" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/7/74/Huffman_coding_example.svg/330px-Huffman_coding_example.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/7/74/Huffman_coding_example.svg/440px-Huffman_coding_example.svg.png 2x" data-file-width="277" data-file-height="133" /></a>
+<div class="thumbcaption">
+<div class="magnify"><a href="/wiki/File:Huffman_coding_example.svg" class="internal" title="Enlarge"></a></div>
+A source generates 4 different symbols <span><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" >
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mo fence="false" stretchy="false">{</mo>
+        <msub>
+          <mi>a</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>1</mn>
+          </mrow>
+        </msub>
+        <mo>,</mo>
+        <msub>
+          <mi>a</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>2</mn>
+          </mrow>
+        </msub>
+        <mo>,</mo>
+        <msub>
+          <mi>a</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>3</mn>
+          </mrow>
+        </msub>
+        <mo>,</mo>
+        <msub>
+          <mi>a</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>4</mn>
+          </mrow>
+        </msub>
+        <mo fence="false" stretchy="false">}</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \{a_{1},a_{2},a_{3},a_{4}\}}</annotation>
+  </semantics>
+</math></span><meta class="mwe-math-fallback-image-inline" aria-hidden="true" style="background-image: url(&#039;https://en.wikipedia.org/api/rest_v1/media/math/render/svg/e79d949f0a374ca309789acfeb965f513bd58df0&#039;); background-repeat: no-repeat; background-size: 100% 100%; vertical-align: -0.838ex; width:14.687ex; height:2.843ex;" /></span> with probability <span><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" >
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mo fence="false" stretchy="false">{</mo>
+        <mn>0.4</mn>
+        <mo>;</mo>
+        <mn>0.35</mn>
+        <mo>;</mo>
+        <mn>0.2</mn>
+        <mo>;</mo>
+        <mn>0.05</mn>
+        <mo fence="false" stretchy="false">}</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \{0.4;0.35;0.2;0.05\}}</annotation>
+  </semantics>
+</math></span><meta class="mwe-math-fallback-image-inline" aria-hidden="true" style="background-image: url(&#039;https://en.wikipedia.org/api/rest_v1/media/math/render/svg/09d9a62726a39dba09cc351e882ce53aac27f8c9&#039;); background-repeat: no-repeat; background-size: 100% 100%; vertical-align: -0.838ex; width:19.837ex; height:2.843ex;" /></span>. A binary tree is generated from left to right taking the two least probable symbols and putting them together to form another equivalent symbol having a probability that equals the sum of the two symbols. The process is repeated until there is just one symbol. The tree can then be read backwards, from right to left, assigning different bits to different branches. The final Huffman code is:
+<table class="wikitable">
+<tr>
+<th>Symbol</th>
+<th>Code</th>
+</tr>
+<tr>
+<td>a1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>a2</td>
+<td>10</td>
+</tr>
+<tr>
+<td>a3</td>
+<td>110</td>
+</tr>
+<tr>
+<td>a4</td>
+<td>111</td>
+</tr>
+</table>
+The standard way to represent a signal made of 4 symbols is by using 2 bits/symbol, but the <a href="/wiki/Information_entropy" title="Information entropy" class="mw-redirect">entropy</a> of the source is 1.74 bits/symbol. If this Huffman code is used to represent the signal, then the average length is lowered to 1.85 bits/symbol; it is still far from the theoretical limit because the probabilities of the symbols are different from negative powers of two.</div>
+</div>
+</div>
+<p>The technique works by creating a <a href="/wiki/Binary_tree" title="Binary tree">binary tree</a> of nodes. These can be stored in a regular <a href="/wiki/Array_data_type" title="Array data type">array</a>, the size of which depends on the number of symbols, <span><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" >
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>n</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle n}</annotation>
+  </semantics>
+</math></span><meta class="mwe-math-fallback-image-inline" aria-hidden="true" style="background-image: url(&#039;https://en.wikipedia.org/api/rest_v1/media/math/render/svg/a601995d55609f2d9f5e233e36fbe9ea26011b3b&#039;); background-repeat: no-repeat; background-size: 100% 100%; vertical-align: -0.338ex; width:1.405ex; height:1.676ex;" /></span>. A node can be either a <a href="/wiki/Leaf_node" title="Leaf node" class="mw-redirect">leaf node</a> or an <a href="/wiki/Internal_node" title="Internal node" class="mw-redirect">internal node</a>. Initially, all nodes are leaf nodes, which contain the <b>symbol</b> itself, the <b>weight</b> (frequency of appearance) of the symbol and optionally, a link to a <b>parent</b> node which makes it easy to read the code (in reverse) starting from a leaf node. Internal nodes contain symbol <b>weight</b>, links to <b>two child nodes</b> and the optional link to a <b>parent</b> node. As a common convention, bit '0' represents following the left child and bit '1' represents following the right child. A finished tree has up to <span><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" >
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>n</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle n}</annotation>
+  </semantics>
+</math></span><meta class="mwe-math-fallback-image-inline" aria-hidden="true" style="background-image: url(&#039;https://en.wikipedia.org/api/rest_v1/media/math/render/svg/a601995d55609f2d9f5e233e36fbe9ea26011b3b&#039;); background-repeat: no-repeat; background-size: 100% 100%; vertical-align: -0.338ex; width:1.405ex; height:1.676ex;" /></span> leaf nodes and <span><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" >
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>n</mi>
+        <mo>&#x2212;<!-- − --></mo>
+        <mn>1</mn>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle n-1}</annotation>
+  </semantics>
+</math></span><meta class="mwe-math-fallback-image-inline" aria-hidden="true" style="background-image: url(&#039;https://en.wikipedia.org/api/rest_v1/media/math/render/svg/fbd0b0f32b28f51962943ee9ede4fb34198a2521&#039;); background-repeat: no-repeat; background-size: 100% 100%; vertical-align: -0.338ex; width:5.429ex; height:2.176ex;" /></span> internal nodes. A Huffman tree that omits unused symbols produces the most optimal code lengths.</p>
+<p>The process essentially begins with the leaf nodes containing the probabilities of the symbol they represent, then a new node whose children are the 2 nodes with smallest probability is created, such that the new node's probability is equal to the sum of the children's probability. With the previous 2 nodes merged into one node (thus not considering them anymore), and with the new node being now considered, the procedure is repeated until only one node remains, the Huffman tree.</p>
+<p>The simplest construction algorithm uses a <a href="/wiki/Priority_queue" title="Priority queue">priority queue</a> where the node with lowest probability is given highest priority:</p>
+<ol>
+<li>Create a leaf node for each symbol and add it to the priority queue.</li>
+<li>While there is more than one node in the queue:
+<ol>
+<li>Remove the two nodes of highest priority (lowest probability) from the queue</li>
+<li>Create a new internal node with these two nodes as children and with probability equal to the sum of the two nodes' probabilities.</li>
+<li>Add the new node to the queue.</li>
+</ol>
+</li>
+<li>The remaining node is the root node and the tree is complete.</li>
+</ol>
+<p>Since efficient priority queue data structures require O(log <i>n</i>) time per insertion, and a tree with <i>n</i> leaves has 2<i>n</i>−1 nodes, this algorithm operates in O(<i>n</i> log <i>n</i>) time, where <i>n</i> is the number of symbols.</p>
+<p>If the symbols are sorted by probability, there is a <a href="/wiki/Linear-time" title="Linear-time" class="mw-redirect">linear-time</a> (O(<i>n</i>)) method to create a Huffman tree using two <a href="/wiki/Queue_(data_structure)" title="Queue (data structure)" class="mw-redirect">queues</a>, the first one containing the initial weights (along with pointers to the associated leaves), and combined weights (along with pointers to the trees) being put in the back of the second queue. This assures that the lowest weight is always kept at the front of one of the two queues:</p>
+<ol>
+<li>Start with as many leaves as there are symbols.</li>
+<li>Enqueue all leaf nodes into the first queue (by probability in increasing order so that the least likely item is in the head of the queue).</li>
+<li>While there is more than one node in the queues:
+<ol>
+<li>Dequeue the two nodes with the lowest weight by examining the fronts of both queues.</li>
+<li>Create a new internal node, with the two just-removed nodes as children (either node can be either child) and the sum of their weights as the new weight.</li>
+<li>Enqueue the new node into the rear of the second queue.</li>
+</ol>
+</li>
+<li>The remaining node is the root node; the tree has now been generated.</li>
+</ol>
+<p>Although linear-time given sorted input, in the general case of arbitrary input, using this algorithm requires pre-sorting. Thus, since sorting takes O(<i>n</i> log <i>n</i>) time in the general case, both methods have the same overall complexity.</p>
+<p>In many cases, time complexity is not very important in the choice of algorithm here, since <i>n</i> here is the number of symbols in the alphabet, which is typically a very small number (compared to the length of the message to be encoded); whereas complexity analysis concerns the behavior when <i>n</i> grows to be very large.</p>
+<p>It is generally beneficial to minimize the variance of codeword length. For example, a communication buffer receiving Huffman-encoded data may need to be larger to deal with especially long symbols if the tree is especially unbalanced. To minimize variance, simply break ties between queues by choosing the item in the first queue. This modification will retain the mathematical optimality of the Huffman coding while both minimizing variance and minimizing the length of the longest character code.</p>
+<p>Here's an example of optimized Huffman coding using the French subject string "j'aime aller sur le bord de l'eau les jeudis ou les jours impairs". Note that the original Huffman coding tree structure would be different from the given example:</p>
+<div class="center">
+<div class="floatnone"><a href="/wiki/File:Huffman_huff_demo.gif" class="image"><img alt="Huffman huff demo.gif" src="//upload.wikimedia.org/wikipedia/commons/a/ac/Huffman_huff_demo.gif" width="695" height="600" data-file-width="695" data-file-height="600" /></a></div>
+</div>
+<h3><span class="mw-headline" id="Decompression">Decompression</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Huffman_coding&amp;action=edit&amp;section=9" title="Edit section: Decompression">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>Generally speaking, the process of decompression is simply a matter of translating the stream of prefix codes to individual byte values, usually by traversing the Huffman tree node by node as each bit is read from the input stream (reaching a leaf node necessarily terminates the search for that particular byte value). Before this can take place, however, the Huffman tree must be somehow reconstructed. In the simplest case, where character frequencies are fairly predictable, the tree can be preconstructed (and even statistically adjusted on each compression cycle) and thus reused every time, at the expense of at least some measure of compression efficiency. Otherwise, the information to reconstruct the tree must be sent a priori. A naive approach might be to prepend the frequency count of each character to the compression stream. Unfortunately, the overhead in such a case could amount to several kilobytes, so this method has little practical use. If the data is compressed using <a href="/wiki/Canonical_Huffman_code" title="Canonical Huffman code">canonical encoding</a>, the compression model can be precisely reconstructed with just <span><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" >
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>B</mi>
+        <msup>
+          <mn>2</mn>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>B</mi>
+          </mrow>
+        </msup>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle B2^{B}}</annotation>
+  </semantics>
+</math></span><meta class="mwe-math-fallback-image-inline" aria-hidden="true" style="background-image: url(&#039;https://en.wikipedia.org/api/rest_v1/media/math/render/svg/b3836d40fb701e1d06cabf445b8d9ece5f84f9cb&#039;); background-repeat: no-repeat; background-size: 100% 100%; vertical-align: -0.338ex; width:4.434ex; height:2.676ex;" /></span> bits of information (where <span><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" >
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>B</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle B}</annotation>
+  </semantics>
+</math></span><meta class="mwe-math-fallback-image-inline" aria-hidden="true" style="background-image: url(&#039;https://en.wikipedia.org/api/rest_v1/media/math/render/svg/47136aad860d145f75f3eed3022df827cee94d7a&#039;); background-repeat: no-repeat; background-size: 100% 100%; vertical-align: -0.338ex; width:1.774ex; height:2.176ex;" /></span> is the number of bits per symbol). Another method is to simply prepend the Huffman tree, bit by bit, to the output stream. For example, assuming that the value of 0 represents a parent node and 1 a leaf node, whenever the latter is encountered the tree building routine simply reads the next 8 bits to determine the character value of that particular leaf. The process continues recursively until the last leaf node is reached; at that point, the Huffman tree will thus be faithfully reconstructed. The overhead using such a method ranges from roughly 2 to 320 bytes (assuming an 8-bit alphabet). Many other techniques are possible as well. In any case, since the compressed data can include unused "trailing bits" the decompressor must be able to determine when to stop producing output. This can be accomplished by either transmitting the length of the decompressed data along with the compression model or by defining a special code symbol to signify the end of input (the latter method can adversely affect code length optimality, however).</p>
+<h2><span class="mw-headline" id="Main_properties">Main properties</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Huffman_coding&amp;action=edit&amp;section=10" title="Edit section: Main properties">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>The probabilities used can be generic ones for the application domain that are based on average experience, or they can be the actual frequencies found in the text being compressed. This requires that a <a href="/wiki/Frequency_table" title="Frequency table" class="mw-redirect">frequency table</a> must be stored with the compressed text. See the Decompression section above for more information about the various techniques employed for this purpose.</p>
+<h3><span class="mw-headline" id="Optimality">Optimality</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Huffman_coding&amp;action=edit&amp;section=11" title="Edit section: Optimality">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>Although Huffman's original algorithm is optimal for a symbol-by-symbol coding (i.e., a stream of unrelated symbols) with a known input probability distribution, it is not optimal when the symbol-by-symbol restriction is dropped, or when the <a href="/wiki/Probability_mass_function" title="Probability mass function">probability mass functions</a> are unknown. Also, if symbols are not <a href="/wiki/Independent_and_identically_distributed" title="Independent and identically distributed" class="mw-redirect">independent and identically distributed</a>, a single code may be insufficient for optimality. Other methods such as <a href="/wiki/Arithmetic_coding" title="Arithmetic coding">arithmetic coding</a> and <a href="/wiki/LZW" title="LZW" class="mw-redirect">LZW</a> coding often have better compression capability: Both of these methods can combine an arbitrary number of symbols for more efficient coding, and generally adapt to the actual input statistics, useful when input probabilities are not precisely known or vary significantly within the stream. However, these methods have higher computational complexity. Also, both arithmetic coding and LZW were historically a subject of some concern over <a href="/wiki/Patent" title="Patent">patent</a> issues. However, as of mid-2010, the most commonly used techniques for these alternatives to Huffman coding have passed into the public domain as the early patents have expired.</p>
+<p>However, the limitations of Huffman coding should not be overstated; it can be used adaptively, accommodating unknown, changing, or context-dependent probabilities. In the case of known independent and identically distributed random variables, combining symbols ("blocking") reduces inefficiency in a way that approaches optimality as the number of symbols combined increases. Huffman coding is optimal when each input symbol is a known independent and identically distributed random variable having a probability that is an the inverse of a power of two.</p>
+<p>Prefix codes tend to have inefficiency on small alphabets, where probabilities often fall between these optimal points. The worst case for Huffman coding can happen when the probability of a symbol exceeds 2<sup>−1</sup> = 0.5, making the upper limit of inefficiency unbounded. These situations often respond well to a form of blocking called <a href="/wiki/Run-length_encoding" title="Run-length encoding">run-length encoding</a>; for the simple case of <a href="/wiki/Bernoulli_process" title="Bernoulli process">Bernoulli processes</a>, <a href="/wiki/Golomb_coding" title="Golomb coding">Golomb coding</a> is a probably optimal run-length code.</p>
+<p>For a set of symbols with a uniform probability distribution and a number of members which is a <a href="/wiki/Power_of_two" title="Power of two">power of two</a>, Huffman coding is equivalent to simple binary <a href="/wiki/Block_code" title="Block code">block encoding</a>, e.g., <a href="/wiki/ASCII" title="ASCII">ASCII</a> coding. This reflects the fact that compression is not possible with such an input.</p>
+<h2><span class="mw-headline" id="Variations">Variations</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Huffman_coding&amp;action=edit&amp;section=12" title="Edit section: Variations">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>Many variations of Huffman coding exist, some of which use a Huffman-like algorithm, and others of which find optimal prefix codes (while, for example, putting different restrictions on the output). Note that, in the latter case, the method need not be Huffman-like, and, indeed, need not even be <a href="/wiki/Polynomial_time" title="Polynomial time" class="mw-redirect">polynomial time</a>. An exhaustive list of papers on Huffman coding and its variations is given by "Code and Parse Trees for Lossless Source Encoding".<sup id="cite_ref-4" class="reference"><a href="#cite_note-4">[4]</a></sup></p>
+<h3><span class="mw-headline" id="n-ary_Huffman_coding"><i>n</i>-ary Huffman coding</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Huffman_coding&amp;action=edit&amp;section=13" title="Edit section: n-ary Huffman coding">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>The <b><i>n</i>-ary Huffman</b> algorithm uses the {0, 1, ... , <i>n</i> − 1} alphabet to encode message and build an <i>n</i>-ary tree. This approach was considered by Huffman in his original paper. The same algorithm applies as for binary (<i>n</i> equals 2) codes, except that the <i>n</i> least probable symbols are taken together, instead of just the 2 least probable. Note that for <i>n</i> greater than 2, not all sets of source words can properly form an <i>n</i>-ary tree for Huffman coding. In these cases, additional 0-probability place holders must be added. This is because the tree must form an <i>n</i> to 1 contractor; for binary coding, this is a 2 to 1 contractor, and any sized set can form such a contractor. If the number of source words is congruent to 1 modulo <i>n</i>-1, then the set of source words will form a proper Huffman tree.</p>
+<h3><span class="mw-headline" id="Adaptive_Huffman_coding">Adaptive Huffman coding</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Huffman_coding&amp;action=edit&amp;section=14" title="Edit section: Adaptive Huffman coding">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>A variation called <b><a href="/wiki/Adaptive_Huffman_coding" title="Adaptive Huffman coding">adaptive Huffman coding</a></b> involves calculating the probabilities dynamically based on recent actual frequencies in the sequence of source symbols, and changing the coding tree structure to match the updated probability estimates. It is used rarely in practice, since the cost of updating the tree makes it slower than optimized <a href="/wiki/Arithmetic_coding#Adaptive_arithmetic_coding" title="Arithmetic coding">adaptive arithmetic coding</a>, that is more flexible and has a better compression.</p>
+<h3><span class="mw-headline" id="Huffman_template_algorithm">Huffman template algorithm</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Huffman_coding&amp;action=edit&amp;section=15" title="Edit section: Huffman template algorithm">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>Most often, the weights used in implementations of Huffman coding represent numeric probabilities, but the algorithm given above does not require this; it requires only that the weights form a <a href="/wiki/Total_order" title="Total order">totally ordered</a> <a href="/wiki/Monoid#Commutative_monoid" title="Monoid">commutative monoid</a>, meaning a way to order weights and to add them. The <b>Huffman template algorithm</b> enables one to use any kind of weights (costs, frequencies, pairs of weights, non-numerical weights) and one of many combining methods (not just addition). Such algorithms can solve other minimization problems, such as minimizing <span><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" >
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <munder>
+          <mo movablelimits="true" form="prefix">max</mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>i</mi>
+          </mrow>
+        </munder>
+        <mrow>
+          <mo>[</mo>
+          <msub>
+            <mi>w</mi>
+            <mrow class="MJX-TeXAtom-ORD">
+              <mi>i</mi>
+            </mrow>
+          </msub>
+          <mo>+</mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi mathvariant="normal">l</mi>
+            <mi mathvariant="normal">e</mi>
+            <mi mathvariant="normal">n</mi>
+            <mi mathvariant="normal">g</mi>
+            <mi mathvariant="normal">t</mi>
+            <mi mathvariant="normal">h</mi>
+          </mrow>
+          <mrow>
+            <mo>(</mo>
+            <msub>
+              <mi>c</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mi>i</mi>
+              </mrow>
+            </msub>
+            <mo>)</mo>
+          </mrow>
+          <mo>]</mo>
+        </mrow>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \max _{i}\left[w_{i}+\mathrm {length} \left(c_{i}\right)\right]}</annotation>
+  </semantics>
+</math></span><meta class="mwe-math-fallback-image-inline" aria-hidden="true" style="background-image: url(&#039;https://en.wikipedia.org/api/rest_v1/media/math/render/svg/1a80c0b460cf854976824c251037db43d7ed1810&#039;); background-repeat: no-repeat; background-size: 100% 100%; vertical-align: -2.005ex; width:21.827ex; height:4.009ex;" /></span>, a problem first applied to circuit design.</p>
+<h3><span class="mw-headline" id="Length-limited_Huffman_coding.2Fminimum_variance_Huffman_coding"><span id="Length-limited_Huffman_coding"></span><span id="Minimum_variance_Huffman_coding"></span>Length-limited Huffman coding/minimum variance Huffman coding</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Huffman_coding&amp;action=edit&amp;section=16" title="Edit section: Length-limited Huffman coding/minimum variance Huffman coding">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p><b>Length-limited Huffman coding</b> is a variant where the goal is still to achieve a minimum weighted path length, but there is an additional restriction that the length of each codeword must be less than a given constant. The <a href="/wiki/Package-merge_algorithm" title="Package-merge algorithm">package-merge algorithm</a> solves this problem with a simple <a href="/wiki/Greedy_algorithm" title="Greedy algorithm">greedy</a> approach very similar to that used by Huffman's algorithm. Its time complexity is <span><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" >
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>O</mi>
+        <mo stretchy="false">(</mo>
+        <mi>n</mi>
+        <mi>L</mi>
+        <mo stretchy="false">)</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle O(nL)}</annotation>
+  </semantics>
+</math></span><meta class="mwe-math-fallback-image-inline" aria-hidden="true" style="background-image: url(&#039;https://en.wikipedia.org/api/rest_v1/media/math/render/svg/a115e943ca1827d51630227813a09e82b0980b8c&#039;); background-repeat: no-repeat; background-size: 100% 100%; vertical-align: -0.838ex; width:6.612ex; height:2.843ex;" /></span>, where <span><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" >
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>L</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle L}</annotation>
+  </semantics>
+</math></span><meta class="mwe-math-fallback-image-inline" aria-hidden="true" style="background-image: url(&#039;https://en.wikipedia.org/api/rest_v1/media/math/render/svg/103168b86f781fe6e9a4a87b8ea1cebe0ad4ede8&#039;); background-repeat: no-repeat; background-size: 100% 100%; vertical-align: -0.338ex; width:1.593ex; height:2.176ex;" /></span> is the maximum length of a codeword. No algorithm is known to solve this problem in <a href="/wiki/Big_O_notation#Orders_of_common_functions" title="Big O notation">linear or linearithmic</a> time, unlike the presorted and unsorted conventional Huffman problems, respectively.</p>
+<h3><span class="mw-headline" id="Huffman_coding_with_unequal_letter_costs">Huffman coding with unequal letter costs</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Huffman_coding&amp;action=edit&amp;section=17" title="Edit section: Huffman coding with unequal letter costs">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>In the standard Huffman coding problem, it is assumed that each symbol in the set that the code words are constructed from has an equal cost to transmit: a code word whose length is <i>N</i> digits will always have a cost of <i>N</i>, no matter how many of those digits are 0s, how many are 1s, etc. When working under this assumption, minimizing the total cost of the message and minimizing the total number of digits are the same thing.</p>
+<p><i>Huffman coding with unequal letter costs</i> is the generalization without this assumption: the letters of the encoding alphabet may have non-uniform lengths, due to characteristics of the transmission medium. An example is the encoding alphabet of <a href="/wiki/Morse_code" title="Morse code">Morse code</a>, where a 'dash' takes longer to send than a 'dot', and therefore the cost of a dash in transmission time is higher. The goal is still to minimize the weighted average codeword length, but it is no longer sufficient just to minimize the number of symbols used by the message. No algorithm is known to solve this in the same manner or with the same efficiency as conventional Huffman coding, though it has been solved by <a rel="nofollow" class="external text" href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=1057615&amp;newsearch=true&amp;queryText=Minimum-redundancy%20coding%20for%20the%20discrete%20noiseless%20channel">Karp</a> whose solution has been refined for the case of integer costs by <a rel="nofollow" class="external text" href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=705558&amp;queryText=dynamic%20programming%20golin%20constructing%20optimal%20prefix-free&amp;newsearch=true">Golin</a>.</p>
+<h3><span class="mw-headline" id="Optimal_alphabetic_binary_trees_.28Hu.E2.80.93Tucker_coding.29"><span id="Hu-Tucker_coding"></span><span id="Alphabetic_Huffman_coding"></span><span id="Alphabetic_Huffman_tree"></span>Optimal alphabetic binary trees (Hu–Tucker coding)</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Huffman_coding&amp;action=edit&amp;section=18" title="Edit section: Optimal alphabetic binary trees (Hu–Tucker coding)">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>In the standard Huffman coding problem, it is assumed that any codeword can correspond to any input symbol. In the alphabetic version, the alphabetic order of inputs and outputs must be identical. Thus, for example, <span><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" >
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>A</mi>
+        <mo>=</mo>
+        <mrow>
+          <mo>{</mo>
+          <mi>a</mi>
+          <mo>,</mo>
+          <mi>b</mi>
+          <mo>,</mo>
+          <mi>c</mi>
+          <mo>}</mo>
+        </mrow>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle A=\left\{a,b,c\right\}}</annotation>
+  </semantics>
+</math></span><meta class="mwe-math-fallback-image-inline" aria-hidden="true" style="background-image: url(&#039;https://en.wikipedia.org/api/rest_v1/media/math/render/svg/5253725abd6a5bf17a59383638d748fc80e2eec0&#039;); background-repeat: no-repeat; background-size: 100% 100%; vertical-align: -0.838ex; width:12.563ex; height:2.843ex;" /></span> could not be assigned code <span><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" >
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>H</mi>
+        <mrow>
+          <mo>(</mo>
+          <mi>A</mi>
+          <mo>,</mo>
+          <mi>C</mi>
+          <mo>)</mo>
+        </mrow>
+        <mo>=</mo>
+        <mrow>
+          <mo>{</mo>
+          <mn>00</mn>
+          <mo>,</mo>
+          <mn>1</mn>
+          <mo>,</mo>
+          <mn>01</mn>
+          <mo>}</mo>
+        </mrow>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle H\left(A,C\right)=\left\{00,1,01\right\}}</annotation>
+  </semantics>
+</math></span><meta class="mwe-math-fallback-image-inline" aria-hidden="true" style="background-image: url(&#039;https://en.wikipedia.org/api/rest_v1/media/math/render/svg/c2940f22ba0b9fd277c1387648c319cae29a836b&#039;); background-repeat: no-repeat; background-size: 100% 100%; vertical-align: -0.838ex; width:22.274ex; height:2.843ex;" /></span>, but instead should be assigned either <span><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" >
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>H</mi>
+        <mrow>
+          <mo>(</mo>
+          <mi>A</mi>
+          <mo>,</mo>
+          <mi>C</mi>
+          <mo>)</mo>
+        </mrow>
+        <mo>=</mo>
+        <mrow>
+          <mo>{</mo>
+          <mn>00</mn>
+          <mo>,</mo>
+          <mn>01</mn>
+          <mo>,</mo>
+          <mn>1</mn>
+          <mo>}</mo>
+        </mrow>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle H\left(A,C\right)=\left\{00,01,1\right\}}</annotation>
+  </semantics>
+</math></span><meta class="mwe-math-fallback-image-inline" aria-hidden="true" style="background-image: url(&#039;https://en.wikipedia.org/api/rest_v1/media/math/render/svg/a2f3f93c449df17971e9f5e0587e6168514b7822&#039;); background-repeat: no-repeat; background-size: 100% 100%; vertical-align: -0.838ex; width:22.274ex; height:2.843ex;" /></span> or <span><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" >
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>H</mi>
+        <mrow>
+          <mo>(</mo>
+          <mi>A</mi>
+          <mo>,</mo>
+          <mi>C</mi>
+          <mo>)</mo>
+        </mrow>
+        <mo>=</mo>
+        <mrow>
+          <mo>{</mo>
+          <mn>0</mn>
+          <mo>,</mo>
+          <mn>10</mn>
+          <mo>,</mo>
+          <mn>11</mn>
+          <mo>}</mo>
+        </mrow>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle H\left(A,C\right)=\left\{0,10,11\right\}}</annotation>
+  </semantics>
+</math></span><meta class="mwe-math-fallback-image-inline" aria-hidden="true" style="background-image: url(&#039;https://en.wikipedia.org/api/rest_v1/media/math/render/svg/19021e4b2119067cacc69927449535e2dae0ee8d&#039;); background-repeat: no-repeat; background-size: 100% 100%; vertical-align: -0.838ex; width:22.274ex; height:2.843ex;" /></span>. This is also known as the <b>Hu–Tucker</b> problem, after <a href="/w/index.php?title=T._C._Hu&amp;action=edit&amp;redlink=1" class="new" title="T. C. Hu (page does not exist)">T. C. Hu</a> and <a href="/wiki/Alan_Tucker" title="Alan Tucker">Alan Tucker</a>, the authors of the paper presenting the first <a href="/wiki/Linearithmic" title="Linearithmic" class="mw-redirect">linearithmic</a> solution to this optimal binary alphabetic problem,<sup id="cite_ref-5" class="reference"><a href="#cite_note-5">[5]</a></sup> which has some similarities to Huffman algorithm, but is not a variation of this algorithm. These optimal alphabetic binary trees are often used as <a href="/wiki/Binary_search_tree" title="Binary search tree">binary search trees</a>.</p>
+<h3><span class="mw-headline" id="The_canonical_Huffman_code">The canonical Huffman code</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Huffman_coding&amp;action=edit&amp;section=19" title="Edit section: The canonical Huffman code">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<div role="note" class="hatnote relarticle mainarticle">Main article: <a href="/wiki/Canonical_Huffman_code" title="Canonical Huffman code">Canonical Huffman code</a></div>
+<p>If weights corresponding to the alphabetically ordered inputs are in numerical order, the Huffman code has the same lengths as the optimal alphabetic code, which can be found from calculating these lengths, rendering Hu–Tucker coding unnecessary. The code resulting from numerically (re-)ordered input is sometimes called the <i>canonical Huffman code</i> and is often the code used in practice, due to ease of encoding/decoding. The technique for finding this code is sometimes called <b>Huffman-Shannon-Fano coding</b>, since it is optimal like Huffman coding, but alphabetic in weight probability, like <a href="/wiki/Shannon-Fano_coding" title="Shannon-Fano coding" class="mw-redirect">Shannon-Fano coding</a>. The Huffman-Shannon-Fano code corresponding to the example is <span><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" >
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mo fence="false" stretchy="false">{</mo>
+        <mn>000</mn>
+        <mo>,</mo>
+        <mn>001</mn>
+        <mo>,</mo>
+        <mn>01</mn>
+        <mo>,</mo>
+        <mn>10</mn>
+        <mo>,</mo>
+        <mn>11</mn>
+        <mo fence="false" stretchy="false">}</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \{000,001,01,10,11\}}</annotation>
+  </semantics>
+</math></span><meta class="mwe-math-fallback-image-inline" aria-hidden="true" style="background-image: url(&#039;https://en.wikipedia.org/api/rest_v1/media/math/render/svg/66716f2fabf56efc6c70dcd44dfb4c0b5937ed8b&#039;); background-repeat: no-repeat; background-size: 100% 100%; vertical-align: -0.838ex; width:20.598ex; height:2.843ex;" /></span>, which, having the same codeword lengths as the original solution, is also optimal. But in <i>canonical Huffman code</i>, the result is <span><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" >
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mo fence="false" stretchy="false">{</mo>
+        <mn>110</mn>
+        <mo>,</mo>
+        <mn>111</mn>
+        <mo>,</mo>
+        <mn>00</mn>
+        <mo>,</mo>
+        <mn>01</mn>
+        <mo>,</mo>
+        <mn>10</mn>
+        <mo fence="false" stretchy="false">}</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \{110,111,00,01,10\}}</annotation>
+  </semantics>
+</math></span><meta class="mwe-math-fallback-image-inline" aria-hidden="true" style="background-image: url(&#039;https://en.wikipedia.org/api/rest_v1/media/math/render/svg/7fed0dac074f7e39fcfe91e5cae47c22bbb2f4ac&#039;); background-repeat: no-repeat; background-size: 100% 100%; vertical-align: -0.838ex; width:20.598ex; height:2.843ex;" /></span>.</p>
+<h2><span class="mw-headline" id="Applications">Applications</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Huffman_coding&amp;action=edit&amp;section=20" title="Edit section: Applications">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p><a href="/wiki/Arithmetic_coding" title="Arithmetic coding">Arithmetic coding</a> can be viewed as a generalization of Huffman coding, in the sense that they produce the same output when every symbol has a probability of the form 1/2<sup><i>k</i></sup>; in particular it tends to offer significantly better compression for small alphabet sizes. Huffman coding nevertheless remains in wide use because of its simplicity, high speed, and <a href="/wiki/Arithmetic_coding#US_patents" title="Arithmetic coding">lack of patent coverage</a>. Intuitively, arithmetic coding can offer better compression than Huffman coding because its "code words" can have effectively non-integer bit lengths, whereas code words in Huffman coding can only have an integer number of bits. Therefore, there is an inefficiency in Huffman coding where a code word of length <i>k</i> only optimally matches a symbol of probability 1/2<sup><i>k</i></sup> and other probabilities are not represented as optimally; whereas the code word length in arithmetic coding can be made to exactly match the true probability of the symbol.</p>
+<p>Huffman coding today is often used as a "back-end" to some other compression methods. <a href="/wiki/DEFLATE_(algorithm)" title="DEFLATE (algorithm)" class="mw-redirect">DEFLATE</a> (<a href="/wiki/PKZIP" title="PKZIP">PKZIP</a>'s algorithm) and multimedia <a href="/wiki/Codec" title="Codec">codecs</a> such as <a href="/wiki/JPEG" title="JPEG">JPEG</a> and <a href="/wiki/MP3" title="MP3">MP3</a> have a front-end model and <a href="/wiki/Quantization_(signal_processing)" title="Quantization (signal processing)">quantization</a> followed by Huffman coding (or variable-length prefix-free codes with a similar structure, although perhaps not necessarily designed by using Huffman's algorithm<sup class="noprint Inline-Template" style="margin-left:0.1em; white-space:nowrap;">[<i><a href="/wiki/Wikipedia:Please_clarify" title="Wikipedia:Please clarify"><span title="The text near this tag may need clarification or removal of jargon. (February 2012)">clarification needed</span></a></i>]</sup>).</p>
+<h2><span class="mw-headline" id="See_also">See also</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Huffman_coding&amp;action=edit&amp;section=21" title="Edit section: See also">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul>
+<li><a href="/wiki/Adaptive_Huffman_coding" title="Adaptive Huffman coding">Adaptive Huffman coding</a></li>
+<li><a href="/wiki/Chen-Ho_encoding" title="Chen-Ho encoding" class="mw-redirect">Chen-Ho encoding</a></li>
+<li><a href="/wiki/Data_compression" title="Data compression">Data compression</a></li>
+<li><a href="/wiki/Group_4_compression" title="Group 4 compression">Group 4 compression</a></li>
+<li><a href="/wiki/Huffyuv" title="Huffyuv">Huffyuv</a></li>
+<li><a href="/wiki/Lempel%E2%80%93Ziv%E2%80%93Welch" title="Lempel–Ziv–Welch">Lempel–Ziv–Welch</a></li>
+<li><a href="/wiki/Modified_Huffman_coding" title="Modified Huffman coding">Modified Huffman coding</a> - used in <a href="/wiki/Fax_machines" title="Fax machines" class="mw-redirect">fax machines</a></li>
+<li><a href="/wiki/Shannon-Fano_coding" title="Shannon-Fano coding" class="mw-redirect">Shannon-Fano coding</a></li>
+<li><a href="/wiki/Unicode_Transformation_Format" title="Unicode Transformation Format" class="mw-redirect">Unicode Transformation Format</a> (UTF)</li>
+<li><a href="/wiki/Varicode" title="Varicode">Varicode</a></li>
+</ul>
+<h2><span class="mw-headline" id="Notes">Notes</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Huffman_coding&amp;action=edit&amp;section=22" title="Edit section: Notes">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<table class="mbox-small plainlinks sistersitebox" style="border:1px solid #aaa;background-color:#f9f9f9">
+<tr>
+<td class="mbox-image"><img alt="" src="//upload.wikimedia.org/wikipedia/en/thumb/4/4a/Commons-logo.svg/30px-Commons-logo.svg.png" width="30" height="40" srcset="//upload.wikimedia.org/wikipedia/en/thumb/4/4a/Commons-logo.svg/45px-Commons-logo.svg.png 1.5x, //upload.wikimedia.org/wikipedia/en/thumb/4/4a/Commons-logo.svg/59px-Commons-logo.svg.png 2x" data-file-width="1024" data-file-height="1376" /></td>
+<td class="mbox-text plainlist">Wikimedia Commons has media related to <i><b><a href="//commons.wikimedia.org/wiki/Category:Huffman_coding" class="extiw" title="commons:Category:Huffman coding">Huffman coding</a></b></i>.</td>
+</tr>
+</table>
+<div class="reflist" style="list-style-type: decimal;">
+<ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><b><a href="#cite_ref-1">^</a></b></span> <span class="reference-text"><cite class="citation journal"><a href="/wiki/David_A._Huffman" title="David A. Huffman">Huffman, D.</a> (1952). <a rel="nofollow" class="external text" href="http://compression.ru/download/articles/huff/huffman_1952_minimum-redundancy-codes.pdf">"A Method for the Construction of Minimum-Redundancy Codes"</a> <span style="font-size:85%;">(PDF)</span>. <i><a href="/wiki/Proceedings_of_the_IRE" title="Proceedings of the IRE" class="mw-redirect">Proceedings of the IRE</a></i> <b>40</b> (9): 1098–1101. <a href="/wiki/Digital_object_identifier" title="Digital object identifier">doi</a>:<a rel="nofollow" class="external text" href="//dx.doi.org/10.1109%2FJRPROC.1952.273898">10.1109/JRPROC.1952.273898</a>.</cite><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3AHuffman+coding&amp;rft.atitle=A+Method+for+the+Construction+of+Minimum-Redundancy+Codes&amp;rft.aufirst=D.&amp;rft.aulast=Huffman&amp;rft.date=1952&amp;rft.genre=article&amp;rft_id=http%3A%2F%2Fcompression.ru%2Fdownload%2Farticles%2Fhuff%2Fhuffman_1952_minimum-redundancy-codes.pdf&amp;rft_id=info%3Adoi%2F10.1109%2FJRPROC.1952.273898&amp;rft.issue=9&amp;rft.jtitle=Proceedings+of+the+IRE&amp;rft.pages=1098-1101&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.volume=40" class="Z3988"><span style="display:none;">&#160;</span></span></span></li>
+<li id="cite_note-2"><span class="mw-cite-backlink"><b><a href="#cite_ref-2">^</a></b></span> <span class="reference-text"><cite class="citation journal"><a href="/wiki/Jan_van_Leeuwen" title="Jan van Leeuwen">Van Leeuwen, Jan</a> (1976). <a rel="nofollow" class="external text" href="http://www.staff.science.uu.nl/~leeuw112/huffman.pdf">"On the construction of Huffman trees"</a> <span style="font-size:85%;">(PDF)</span>. <i>ICALP</i>: 382–410<span class="reference-accessdate">. Retrieved <span class="nowrap">20 February</span> 2014</span>.</cite><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3AHuffman+coding&amp;rft.atitle=On+the+construction+of+Huffman+trees&amp;rft.aufirst=Jan&amp;rft.aulast=Van+Leeuwen&amp;rft.date=1976&amp;rft.genre=article&amp;rft_id=http%3A%2F%2Fwww.staff.science.uu.nl%2F~leeuw112%2Fhuffman.pdf&amp;rft.jtitle=ICALP&amp;rft.pages=382-410&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&#160;</span></span></span></li>
+<li id="cite_note-3"><span class="mw-cite-backlink"><b><a href="#cite_ref-3">^</a></b></span> <span class="reference-text">see Ken Huffman (1991)</span></li>
+<li id="cite_note-4"><span class="mw-cite-backlink"><b><a href="#cite_ref-4">^</a></b></span> <span class="reference-text"><cite class="citation journal">Abrahams, J. (1997-06-11). Written at Arlington, VA, USA. Division of Mathematics, Computer &amp; Information Sciences, <a href="/wiki/Office_of_Naval_Research" title="Office of Naval Research">Office of Naval Research</a> (ONR). <a rel="nofollow" class="external text" href="http://ieeexplore.ieee.org/xpl/login.jsp?reload=true&amp;tp=&amp;arnumber=666911">"Code and Parse Trees for Lossless Source Encoding"</a>. <i>Compression and Complexity of Sequences 1997 Proceedings</i> (Salerno: <a href="/wiki/IEEE" title="IEEE" class="mw-redirect">IEEE</a>): 145–171. <a href="/wiki/Digital_object_identifier" title="Digital object identifier">doi</a>:<a rel="nofollow" class="external text" href="//dx.doi.org/10.1109%2FSEQUEN.1997.666911">10.1109/SEQUEN.1997.666911</a>. <a href="/wiki/International_Standard_Book_Number" title="International Standard Book Number">ISBN</a>&#160;<a href="/wiki/Special:BookSources/0-8186-8132-2" title="Special:BookSources/0-8186-8132-2">0-8186-8132-2</a><span class="reference-accessdate">. Retrieved <span class="nowrap">2016-02-09</span></span>.</cite><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3AHuffman+coding&amp;rft.atitle=Code+and+Parse+Trees+for+Lossless+Source+Encoding&amp;rft.aufirst=J.&amp;rft.aulast=Abrahams&amp;rft.date=1997-06-11&amp;rft.genre=article&amp;rft_id=http%3A%2F%2Fieeexplore.ieee.org%2Fxpl%2Flogin.jsp%3Freload%3Dtrue%26tp%3D%26arnumber%3D666911&amp;rft_id=info%3Adoi%2F10.1109%2FSEQUEN.1997.666911&amp;rft.isbn=0-8186-8132-2&amp;rft.jtitle=Compression+and+Complexity+of+Sequences+1997+Proceedings&amp;rft.pages=145-171&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&#160;</span></span></span></li>
+<li id="cite_note-5"><span class="mw-cite-backlink"><b><a href="#cite_ref-5">^</a></b></span> <span class="reference-text"><cite class="citation journal">Hu, T. C.; <a href="/wiki/Alan_Tucker" title="Alan Tucker">Tucker, A. C.</a> (1971). "Optimal Computer Search Trees and Variable-Length Alphabetical Codes". <i>SIAM Journal on Applied Mathematics</i> <b>21</b> (4): 514. <a href="/wiki/Digital_object_identifier" title="Digital object identifier">doi</a>:<a rel="nofollow" class="external text" href="//dx.doi.org/10.1137%2F0121057">10.1137/0121057</a>. <a href="/wiki/JSTOR" title="JSTOR">JSTOR</a>&#160;<a rel="nofollow" class="external text" href="//www.jstor.org/stable/2099603">2099603</a>.</cite><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3AHuffman+coding&amp;rft.atitle=Optimal+Computer+Search+Trees+and+Variable-Length+Alphabetical+Codes&amp;rft.aufirst=T.+C.&amp;rft.aulast=Hu&amp;rft.au=Tucker%2C+A.+C.&amp;rft.date=1971&amp;rft.genre=article&amp;rft_id=%2F%2Fwww.jstor.org%2Fstable%2F2099603&amp;rft_id=info%3Adoi%2F10.1137%2F0121057&amp;rft.issue=4&amp;rft.jtitle=SIAM+Journal+on+Applied+Mathematics&amp;rft.pages=514&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.volume=21" class="Z3988"><span style="display:none;">&#160;</span></span></span></li>
+</ol>
+</div>
+<h2><span class="mw-headline" id="External_links">External links</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Huffman_coding&amp;action=edit&amp;section=23" title="Edit section: External links">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul>
+<li><a rel="nofollow" class="external text" href="https://github.com/Cyan4973/FiniteStateEntropy">Open source fast implementation by Yann Collet</a></li>
+</ul>
+<h2><span class="mw-headline" id="References">References</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Huffman_coding&amp;action=edit&amp;section=24" title="Edit section: References">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul>
+<li>D.A. Huffman, "A Method for the Construction of Minimum-Redundancy Codes", Proceedings of the I.R.E., September 1952, pp 1098–1102. Huffman's original article.</li>
+<li>Ken Huffman. <a rel="nofollow" class="external text" href="http://www.huffmancoding.com/my-uncle/scientific-american">Profile: David A. Huffman</a>, <a href="/wiki/Scientific_American" title="Scientific American">Scientific American</a>, September 1991, pp.&#160;54–58</li>
+<li><a href="/wiki/Thomas_H._Cormen" title="Thomas H. Cormen">Thomas H. Cormen</a>, <a href="/wiki/Charles_E._Leiserson" title="Charles E. Leiserson">Charles E. Leiserson</a>, <a href="/wiki/Ronald_L._Rivest" title="Ronald L. Rivest" class="mw-redirect">Ronald L. Rivest</a>, and <a href="/wiki/Clifford_Stein" title="Clifford Stein">Clifford Stein</a>. <i><a href="/wiki/Introduction_to_Algorithms" title="Introduction to Algorithms">Introduction to Algorithms</a></i>, Second Edition. MIT Press and McGraw-Hill, 2001. <a href="/wiki/Special:BookSources/0262032937" class="internal mw-magiclink-isbn">ISBN 0-262-03293-7</a>. Section 16.3, pp.&#160;385–392.</li>
+</ul>
+<table class="navbox" style="border-spacing:0">
+<tr>
+<td style="padding:2px">
+<table class="nowraplinks hlist collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit">
+<tr>
+<th scope="col" class="navbox-title" colspan="2">
+<div class="plainlinks hlist navbar mini">
+<ul>
+<li class="nv-view"><a href="/wiki/Template:Compression_methods" title="Template:Compression methods"><abbr title="View this template" style=";;background:none transparent;border:none;">v</abbr></a></li>
+<li class="nv-talk"><a href="/wiki/Template_talk:Compression_methods" title="Template talk:Compression methods"><abbr title="Discuss this template" style=";;background:none transparent;border:none;">t</abbr></a></li>
+<li class="nv-edit"><a class="external text" href="//en.wikipedia.org/w/index.php?title=Template:Compression_methods&amp;action=edit"><abbr title="Edit this template" style=";;background:none transparent;border:none;">e</abbr></a></li>
+</ul>
+</div>
+<div style="font-size:114%"><a href="/wiki/Data_compression" title="Data compression">Data compression</a> methods</div>
+</th>
+</tr>
+<tr style="height:2px">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group"><a href="/wiki/Lossless_compression" title="Lossless compression">Lossless</a></th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px">
+<div style="padding:0em 0.25em"></div>
+<table class="nowraplinks navbox-subgroup" style="border-spacing:0">
+<tr>
+<th scope="row" class="navbox-group" style="width:7.0em;font-weight:normal;"><a href="/wiki/Entropy_encoding" title="Entropy encoding">Entropy type</a></th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px">
+<div style="padding:0em 0.25em">
+<ul>
+<li><a href="/wiki/Unary_coding" title="Unary coding">Unary</a></li>
+<li><a href="/wiki/Arithmetic_coding" title="Arithmetic coding">Arithmetic</a></li>
+<li><a href="/wiki/Golomb_coding" title="Golomb coding">Golomb</a></li>
+<li><strong class="selflink">Huffman</strong>
+<ul>
+<li><a href="/wiki/Adaptive_Huffman_coding" title="Adaptive Huffman coding">Adaptive</a></li>
+<li><a href="/wiki/Canonical_Huffman_code" title="Canonical Huffman code">Canonical</a></li>
+<li><a href="/wiki/Modified_Huffman_coding" title="Modified Huffman coding">Modified</a></li>
+</ul>
+</li>
+<li><a href="/wiki/Range_encoding" title="Range encoding">Range</a></li>
+<li><a href="/wiki/Shannon_coding" title="Shannon coding">Shannon</a></li>
+<li><a href="/wiki/Shannon%E2%80%93Fano_coding" title="Shannon–Fano coding">Shannon–Fano</a></li>
+<li><a href="/wiki/Shannon%E2%80%93Fano%E2%80%93Elias_coding" title="Shannon–Fano–Elias coding">Shannon–Fano–Elias</a></li>
+<li><a href="/wiki/Tunstall_coding" title="Tunstall coding">Tunstall</a></li>
+<li><a href="/wiki/Universal_code_(data_compression)" title="Universal code (data compression)">Universal</a>
+<ul>
+<li><a href="/wiki/Exponential-Golomb_coding" title="Exponential-Golomb coding">Exp-Golomb</a></li>
+<li><a href="/wiki/Fibonacci_coding" title="Fibonacci coding">Fibonacci</a></li>
+<li><a href="/wiki/Elias_gamma_coding" title="Elias gamma coding">Gamma</a></li>
+<li><a href="/wiki/Levenshtein_coding" title="Levenshtein coding">Levenshtein</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group" style="width:7.0em;font-weight:normal;"><a href="/wiki/Dictionary_coder" title="Dictionary coder">Dictionary type</a></th>
+<td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px">
+<div style="padding:0em 0.25em">
+<ul>
+<li><a href="/wiki/Byte_pair_encoding" title="Byte pair encoding">Byte pair encoding</a></li>
+<li><a href="/wiki/DEFLATE" title="DEFLATE">DEFLATE</a></li>
+<li><a href="/wiki/LZ77_and_LZ78" title="LZ77 and LZ78">Lempel–Ziv</a>
+<ul>
+<li><a href="/wiki/LZ77_and_LZ78" title="LZ77 and LZ78">LZ77&#160;/ LZ78 (LZ1&#160;/ LZ2)</a></li>
+<li><a href="/wiki/LZJB" title="LZJB">LZJB</a></li>
+<li><a href="/wiki/Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm" title="Lempel–Ziv–Markov chain algorithm">LZMA</a></li>
+<li><a href="/wiki/Lempel%E2%80%93Ziv%E2%80%93Oberhumer" title="Lempel–Ziv–Oberhumer">LZO</a></li>
+<li><a href="/wiki/LZRW" title="LZRW">LZRW</a></li>
+<li><a href="/wiki/Lempel%E2%80%93Ziv%E2%80%93Stac" title="Lempel–Ziv–Stac">LZS</a></li>
+<li><a href="/wiki/Lempel%E2%80%93Ziv%E2%80%93Storer%E2%80%93Szymanski" title="Lempel–Ziv–Storer–Szymanski">LZSS</a></li>
+<li><a href="/wiki/Lempel%E2%80%93Ziv%E2%80%93Welch" title="Lempel–Ziv–Welch">LZW</a></li>
+<li><a href="/wiki/LZWL" title="LZWL">LZWL</a></li>
+<li><a href="/wiki/LZX_(algorithm)" title="LZX (algorithm)">LZX</a></li>
+<li><a href="/wiki/LZ4_(compression_algorithm)" title="LZ4 (compression algorithm)">LZ4</a></li>
+<li><a href="/wiki/Statistical_Lempel%E2%80%93Ziv" title="Statistical Lempel–Ziv">Statistical</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group" style="width:7.0em;font-weight:normal;">Other types</th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px">
+<div style="padding:0em 0.25em">
+<ul>
+<li><a href="/wiki/Burrows%E2%80%93Wheeler_transform" title="Burrows–Wheeler transform">BWT</a></li>
+<li><a href="/wiki/Context_tree_weighting" title="Context tree weighting">CTW</a></li>
+<li><a href="/wiki/Delta_encoding" title="Delta encoding">Delta</a></li>
+<li><a href="/wiki/Dynamic_Markov_compression" title="Dynamic Markov compression">DMC</a></li>
+<li><a href="/wiki/Move-to-front_transform" title="Move-to-front transform">MTF</a></li>
+<li><a href="/wiki/PAQ" title="PAQ">PAQ</a></li>
+<li><a href="/wiki/Prediction_by_partial_matching" title="Prediction by partial matching">PPM</a></li>
+<li><a href="/wiki/Run-length_encoding" title="Run-length encoding">RLE</a></li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr style="height:2px">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group"><a href="/wiki/Audio_compression_(data)" title="Audio compression (data)" class="mw-redirect">Audio</a></th>
+<td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px">
+<div style="padding:0em 0.25em"></div>
+<table class="nowraplinks navbox-subgroup" style="border-spacing:0">
+<tr>
+<th scope="row" class="navbox-group" style="width:7.0em;font-weight:normal;">Concepts</th>
+<td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px">
+<div style="padding:0em 0.25em">
+<ul>
+<li><a href="/wiki/Bit_rate" title="Bit rate">Bit rate</a>
+<ul>
+<li><a href="/wiki/Average_bitrate" title="Average bitrate">average (ABR)</a></li>
+<li><a href="/wiki/Constant_bitrate" title="Constant bitrate">constant (CBR)</a></li>
+<li><a href="/wiki/Variable_bitrate" title="Variable bitrate">variable (VBR)</a></li>
+</ul>
+</li>
+<li><a href="/wiki/Companding" title="Companding">Companding</a></li>
+<li><a href="/wiki/Convolution" title="Convolution">Convolution</a></li>
+<li><a href="/wiki/Dynamic_range" title="Dynamic range">Dynamic range</a></li>
+<li><a href="/wiki/Latency_(audio)" title="Latency (audio)">Latency</a></li>
+<li><a href="/wiki/Nyquist%E2%80%93Shannon_sampling_theorem" title="Nyquist–Shannon sampling theorem">Nyquist–Shannon theorem</a></li>
+<li><a href="/wiki/Sampling_(signal_processing)" title="Sampling (signal processing)">Sampling</a></li>
+<li><a href="/wiki/Sound_quality" title="Sound quality">Sound quality</a></li>
+<li><a href="/wiki/Speech_coding" title="Speech coding">Speech coding</a></li>
+<li><a href="/wiki/Sub-band_coding" title="Sub-band coding">Sub-band coding</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group" style="width:7.0em;font-weight:normal;"><a href="/wiki/Audio_codec" title="Audio codec">Codec</a> parts</th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px">
+<div style="padding:0em 0.25em">
+<ul>
+<li><a href="/wiki/A-law_algorithm" title="A-law algorithm">A-law</a></li>
+<li><a href="/wiki/%CE%9C-law_algorithm" title="Μ-law algorithm">μ-law</a></li>
+<li><a href="/wiki/Algebraic_code-excited_linear_prediction" title="Algebraic code-excited linear prediction">ACELP</a></li>
+<li><a href="/wiki/Adaptive_differential_pulse-code_modulation" title="Adaptive differential pulse-code modulation">ADPCM</a></li>
+<li><a href="/wiki/Code-excited_linear_prediction" title="Code-excited linear prediction">CELP</a></li>
+<li><a href="/wiki/Differential_pulse-code_modulation" title="Differential pulse-code modulation">DPCM</a></li>
+<li><a href="/wiki/Fourier_transform" title="Fourier transform">Fourier transform</a></li>
+<li><a href="/wiki/Linear_predictive_coding" title="Linear predictive coding">LPC</a>
+<ul>
+<li><a href="/wiki/Log_area_ratio" title="Log area ratio">LAR</a></li>
+<li><a href="/wiki/Line_spectral_pairs" title="Line spectral pairs">LSP</a></li>
+</ul>
+</li>
+<li><a href="/wiki/Modified_discrete_cosine_transform" title="Modified discrete cosine transform">MDCT</a></li>
+<li><a href="/wiki/Psychoacoustics" title="Psychoacoustics">Psychoacoustic model</a></li>
+<li><a href="/wiki/Warped_linear_predictive_coding" title="Warped linear predictive coding">WLPC</a></li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr style="height:2px">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group"><a href="/wiki/Image_compression" title="Image compression">Image</a></th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px">
+<div style="padding:0em 0.25em"></div>
+<table class="nowraplinks navbox-subgroup" style="border-spacing:0">
+<tr>
+<th scope="row" class="navbox-group" style="width:7.0em;font-weight:normal;">Concepts</th>
+<td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px">
+<div style="padding:0em 0.25em">
+<ul>
+<li><a href="/wiki/Chroma_subsampling" title="Chroma subsampling">Chroma subsampling</a></li>
+<li><a href="/wiki/Coding_tree_unit" title="Coding tree unit">Coding tree unit</a></li>
+<li><a href="/wiki/Color_space" title="Color space">Color space</a></li>
+<li><a href="/wiki/Compression_artifact" title="Compression artifact">Compression artifact</a></li>
+<li><a href="/wiki/Image_resolution" title="Image resolution">Image resolution</a></li>
+<li><a href="/wiki/Macroblock" title="Macroblock">Macroblock</a></li>
+<li><a href="/wiki/Pixel" title="Pixel">Pixel</a></li>
+<li><a href="/wiki/Peak_signal-to-noise_ratio" title="Peak signal-to-noise ratio">PSNR</a></li>
+<li><a href="/wiki/Quantization_(image_processing)" title="Quantization (image processing)">Quantization</a></li>
+<li><a href="/wiki/Standard_test_image" title="Standard test image">Standard test image</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group" style="width:7.0em;font-weight:normal;">Methods</th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px">
+<div style="padding:0em 0.25em">
+<ul>
+<li><a href="/wiki/Chain_code" title="Chain code">Chain code</a></li>
+<li><a href="/wiki/Discrete_cosine_transform" title="Discrete cosine transform">DCT</a></li>
+<li><a href="/wiki/Embedded_Zerotrees_of_Wavelet_transforms" title="Embedded Zerotrees of Wavelet transforms">EZW</a></li>
+<li><a href="/wiki/Fractal_compression" title="Fractal compression">Fractal</a></li>
+<li><a href="/wiki/Karhunen%E2%80%93Lo%C3%A8ve_theorem" title="Karhunen–Loève theorem">KLT</a></li>
+<li><a href="/wiki/Pyramid_(image_processing)" title="Pyramid (image processing)">LP</a></li>
+<li><a href="/wiki/Run-length_encoding" title="Run-length encoding">RLE</a></li>
+<li><a href="/wiki/Set_partitioning_in_hierarchical_trees" title="Set partitioning in hierarchical trees">SPIHT</a></li>
+<li><a href="/wiki/Wavelet_compression" title="Wavelet compression" class="mw-redirect">Wavelet</a></li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr style="height:2px">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group"><a href="/wiki/Video_compression" title="Video compression" class="mw-redirect">Video</a></th>
+<td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px">
+<div style="padding:0em 0.25em"></div>
+<table class="nowraplinks navbox-subgroup" style="border-spacing:0">
+<tr>
+<th scope="row" class="navbox-group" style="width:7.0em;font-weight:normal;">Concepts</th>
+<td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px">
+<div style="padding:0em 0.25em">
+<ul>
+<li><a href="/wiki/Bit_rate" title="Bit rate">Bit rate</a>
+<ul>
+<li><a href="/wiki/Average_bitrate" title="Average bitrate">average (ABR)</a></li>
+<li><a href="/wiki/Constant_bitrate" title="Constant bitrate">constant (CBR)</a></li>
+<li><a href="/wiki/Variable_bitrate" title="Variable bitrate">variable (VBR)</a></li>
+</ul>
+</li>
+<li><a href="/wiki/Display_resolution" title="Display resolution">Display resolution</a></li>
+<li><a href="/wiki/Film_frame" title="Film frame">Frame</a></li>
+<li><a href="/wiki/Frame_rate" title="Frame rate">Frame rate</a></li>
+<li><a href="/wiki/Video_compression_picture_types" title="Video compression picture types">Frame types</a></li>
+<li><a href="/wiki/Interlaced_video" title="Interlaced video">Interlace</a></li>
+<li><a href="/wiki/Video#Characteristics_of_video_streams" title="Video">Video characteristics</a></li>
+<li><a href="/wiki/Video_quality" title="Video quality">Video quality</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group" style="width:7.0em;font-weight:normal;"><a href="/wiki/Video_codec" title="Video codec">Codec</a> parts</th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px">
+<div style="padding:0em 0.25em">
+<ul>
+<li><a href="/wiki/Lapped_transform" title="Lapped transform">Lapped transform</a></li>
+<li><a href="/wiki/Discrete_cosine_transform" title="Discrete cosine transform">DCT</a></li>
+<li><a href="/wiki/Deblocking_filter" title="Deblocking filter">Deblocking filter</a></li>
+<li><a href="/wiki/Motion_compensation" title="Motion compensation">Motion compensation</a></li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr style="height:2px">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group"><a href="/wiki/Information_theory" title="Information theory">Theory</a></th>
+<td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px">
+<div style="padding:0em 0.25em">
+<ul>
+<li><a href="/wiki/Entropy_(information_theory)" title="Entropy (information theory)">Entropy</a></li>
+<li><a href="/wiki/Kolmogorov_complexity" title="Kolmogorov complexity">Kolmogorov complexity</a></li>
+<li><a href="/wiki/Lossy_compression" title="Lossy compression">Lossy</a></li>
+<li><a href="/wiki/Quantization_(signal_processing)" title="Quantization (signal processing)">Quantization</a></li>
+<li><a href="/wiki/Rate%E2%80%93distortion_theory" title="Rate–distortion theory">Rate–distortion</a></li>
+<li><a href="/wiki/Redundancy_(information_theory)" title="Redundancy (information theory)">Redundancy</a></li>
+<li><a href="/wiki/Timeline_of_information_theory" title="Timeline of information theory">Timeline of information theory</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px">
+<td colspan="2"></td>
+</tr>
+<tr>
+<td class="navbox-abovebelow" colspan="2">
+<div>
+<ul>
+<li><img alt="Template" src="//upload.wikimedia.org/wikipedia/en/thumb/5/5c/Symbol_template_class.svg/16px-Symbol_template_class.svg.png" title="Template" width="16" height="16" srcset="//upload.wikimedia.org/wikipedia/en/thumb/5/5c/Symbol_template_class.svg/23px-Symbol_template_class.svg.png 1.5x, //upload.wikimedia.org/wikipedia/en/thumb/5/5c/Symbol_template_class.svg/31px-Symbol_template_class.svg.png 2x" data-file-width="180" data-file-height="185" /> <a href="/wiki/Template:Compression_formats" title="Template:Compression formats">Compression formats</a></li>
+<li><img alt="Template" src="//upload.wikimedia.org/wikipedia/en/thumb/5/5c/Symbol_template_class.svg/16px-Symbol_template_class.svg.png" title="Template" width="16" height="16" srcset="//upload.wikimedia.org/wikipedia/en/thumb/5/5c/Symbol_template_class.svg/23px-Symbol_template_class.svg.png 1.5x, //upload.wikimedia.org/wikipedia/en/thumb/5/5c/Symbol_template_class.svg/31px-Symbol_template_class.svg.png 2x" data-file-width="180" data-file-height="185" /> <a href="/wiki/Template:Compression_software" title="Template:Compression software">Compression software (codecs)</a></li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+<!-- 
+NewPP limit report
+Parsed by mw1188
+Cached time: 20160524174351
+Cache expiry: 2592000
+Dynamic content: false
+CPU time usage: 0.476 seconds
+Real time usage: 1.152 seconds
+Preprocessor visited node count: 1213/1000000
+Preprocessor generated node count: 0/1500000
+Post‐expand include size: 57395/2097152 bytes
+Template argument size: 725/2097152 bytes
+Highest expansion depth: 11/40
+Expensive parser function count: 2/500
+Lua time usage: 0.112/10.000 seconds
+Lua memory usage: 3.05 MB/50 MB
+Number of Wikibase entities loaded: 1-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  311.152      1 - -total
+ 24.63%   76.644      1 - Template:Reflist
+ 20.39%   63.433      1 - Template:More_footnotes
+ 18.63%   57.961      5 - Template:Navbox
+ 18.51%   57.603      3 - Template:Cite_journal
+ 15.68%   48.788      1 - Template:Compression_Methods
+ 13.98%   43.494      1 - Template:Clarify
+ 12.93%   40.242      1 - Template:Ambox
+ 12.69%   39.494      1 - Template:Fix-span
+  9.30%   28.940      1 - Template:Commons_category
+-->
+
+<!-- Saved in parser cache with key enwiki:pcache:idhash:13883-0!*!0!!en!4!*!math=5 and timestamp 20160524174349 and revision id 721855632
+ -->
+<noscript><img src="//en.wikipedia.org/wiki/Special:CentralAutoLogin/start?type=1x1" alt="" title="" width="1" height="1" style="border: none; position: absolute;" /></noscript></div>					<div class="printfooter">
+						Retrieved from "<a dir="ltr" href="https://en.wikipedia.org/w/index.php?title=Huffman_coding&amp;oldid=721855632">https://en.wikipedia.org/w/index.php?title=Huffman_coding&amp;oldid=721855632</a>"					</div>
+				<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Help:Category" title="Help:Category">Categories</a>: <ul><li><a href="/wiki/Category:1952_in_computer_science" title="Category:1952 in computer science">1952 in computer science</a></li><li><a href="/wiki/Category:Lossless_compression_algorithms" title="Category:Lossless compression algorithms">Lossless compression algorithms</a></li><li><a href="/wiki/Category:Binary_trees" title="Category:Binary trees">Binary trees</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">Hidden categories: <ul><li><a href="/wiki/Category:Articles_lacking_in-text_citations_from_January_2011" title="Category:Articles lacking in-text citations from January 2011">Articles lacking in-text citations from January 2011</a></li><li><a href="/wiki/Category:All_articles_lacking_in-text_citations" title="Category:All articles lacking in-text citations">All articles lacking in-text citations</a></li><li><a href="/wiki/Category:Wikipedia_articles_needing_clarification_from_February_2012" title="Category:Wikipedia articles needing clarification from February 2012">Wikipedia articles needing clarification from February 2012</a></li><li><a href="/wiki/Category:Commons_category_with_local_link_same_as_on_Wikidata" title="Category:Commons category with local link same as on Wikidata">Commons category with local link same as on Wikidata</a></li></ul></div></div>				<div class="visualClear"></div>
+							</div>
+		</div>
+		<div id="mw-navigation">
+			<h2>Navigation menu</h2>
+
+			<div id="mw-head">
+									<div id="p-personal" role="navigation" class="" aria-labelledby="p-personal-label">
+						<h3 id="p-personal-label">Personal tools</h3>
+						<ul>
+							<li id="pt-anonuserpage">Not logged in</li><li id="pt-anontalk"><a href="/wiki/Special:MyTalk" title="Discussion about edits from this IP address [n]" accesskey="n">Talk</a></li><li id="pt-anoncontribs"><a href="/wiki/Special:MyContributions" title="A list of edits made from this IP address [y]" accesskey="y">Contributions</a></li><li id="pt-createaccount"><a href="/w/index.php?title=Special:UserLogin&amp;returnto=Huffman+coding&amp;type=signup" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="/w/index.php?title=Special:UserLogin&amp;returnto=Huffman+coding" title="You're encouraged to log in; however, it's not mandatory. [o]" accesskey="o">Log in</a></li>						</ul>
+					</div>
+									<div id="left-navigation">
+										<div id="p-namespaces" role="navigation" class="vectorTabs" aria-labelledby="p-namespaces-label">
+						<h3 id="p-namespaces-label">Namespaces</h3>
+						<ul>
+															<li  id="ca-nstab-main" class="selected"><span><a href="/wiki/Huffman_coding"  title="View the content page [c]" accesskey="c">Article</a></span></li>
+															<li  id="ca-talk"><span><a href="/wiki/Talk:Huffman_coding"  title="Discussion about the content page [t]" accesskey="t" rel="discussion">Talk</a></span></li>
+													</ul>
+					</div>
+										<div id="p-variants" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-variants-label">
+												<h3 id="p-variants-label">
+							<span>Variants</span><a href="#"></a>
+						</h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+									</div>
+				<div id="right-navigation">
+										<div id="p-views" role="navigation" class="vectorTabs" aria-labelledby="p-views-label">
+						<h3 id="p-views-label">Views</h3>
+						<ul>
+															<li id="ca-view" class="selected"><span><a href="/wiki/Huffman_coding" >Read</a></span></li>
+															<li id="ca-edit"><span><a href="/w/index.php?title=Huffman_coding&amp;action=edit"  title="Edit this page [e]" accesskey="e">Edit</a></span></li>
+															<li id="ca-history" class="collapsible"><span><a href="/w/index.php?title=Huffman_coding&amp;action=history"  title="Past revisions of this page [h]" accesskey="h">View history</a></span></li>
+													</ul>
+					</div>
+										<div id="p-cactions" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-cactions-label">
+						<h3 id="p-cactions-label"><span>More</span><a href="#"></a></h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+										<div id="p-search" role="search">
+						<h3>
+							<label for="searchInput">Search</label>
+						</h3>
+
+						<form action="/w/index.php" id="searchform">
+							<div id="simpleSearch">
+							<input type="search" name="search" placeholder="Search" title="Search Wikipedia [f]" accesskey="f" id="searchInput"/><input type="hidden" value="Special:Search" name="title"/><input type="submit" name="fulltext" value="Search" title="Search Wikipedia for this text" id="mw-searchButton" class="searchButton mw-fallbackSearchButton"/><input type="submit" name="go" value="Go" title="Go to a page with this exact name if it exists" id="searchButton" class="searchButton"/>							</div>
+						</form>
+					</div>
+									</div>
+			</div>
+			<div id="mw-panel">
+				<div id="p-logo" role="banner"><a class="mw-wiki-logo" href="/wiki/Main_Page"  title="Visit the main page"></a></div>
+						<div class="portal" role="navigation" id='p-navigation' aria-labelledby='p-navigation-label'>
+			<h3 id='p-navigation-label'>Navigation</h3>
+
+			<div class="body">
+									<ul>
+						<li id="n-mainpage-description"><a href="/wiki/Main_Page" title="Visit the main page [z]" accesskey="z">Main page</a></li><li id="n-contents"><a href="/wiki/Portal:Contents" title="Guides to browsing Wikipedia">Contents</a></li><li id="n-featuredcontent"><a href="/wiki/Portal:Featured_content" title="Featured content – the best of Wikipedia">Featured content</a></li><li id="n-currentevents"><a href="/wiki/Portal:Current_events" title="Find background information on current events">Current events</a></li><li id="n-randompage"><a href="/wiki/Special:Random" title="Load a random article [x]" accesskey="x">Random article</a></li><li id="n-sitesupport"><a href="https://donate.wikimedia.org/wiki/Special:FundraiserRedirector?utm_source=donate&amp;utm_medium=sidebar&amp;utm_campaign=C13_en.wikipedia.org&amp;uselang=en" title="Support us">Donate to Wikipedia</a></li><li id="n-shoplink"><a href="//shop.wikimedia.org" title="Visit the Wikipedia store">Wikipedia store</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id='p-interaction' aria-labelledby='p-interaction-label'>
+			<h3 id='p-interaction-label'>Interaction</h3>
+
+			<div class="body">
+									<ul>
+						<li id="n-help"><a href="/wiki/Help:Contents" title="Guidance on how to use and edit Wikipedia">Help</a></li><li id="n-aboutsite"><a href="/wiki/Wikipedia:About" title="Find out about Wikipedia">About Wikipedia</a></li><li id="n-portal"><a href="/wiki/Wikipedia:Community_portal" title="About the project, what you can do, where to find things">Community portal</a></li><li id="n-recentchanges"><a href="/wiki/Special:RecentChanges" title="A list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li><li id="n-contactpage"><a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us" title="How to contact Wikipedia">Contact page</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id='p-tb' aria-labelledby='p-tb-label'>
+			<h3 id='p-tb-label'>Tools</h3>
+
+			<div class="body">
+									<ul>
+						<li id="t-whatlinkshere"><a href="/wiki/Special:WhatLinksHere/Huffman_coding" title="List of all English Wikipedia pages containing links to this page [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="/wiki/Special:RecentChangesLinked/Huffman_coding" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-upload"><a href="/wiki/Wikipedia:File_Upload_Wizard" title="Upload files [u]" accesskey="u">Upload file</a></li><li id="t-specialpages"><a href="/wiki/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-permalink"><a href="/w/index.php?title=Huffman_coding&amp;oldid=721855632" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="/w/index.php?title=Huffman_coding&amp;action=info" title="More information about this page">Page information</a></li><li id="t-wikibase"><a href="https://www.wikidata.org/wiki/Q2647" title="Link to connected data repository item [g]" accesskey="g">Wikidata item</a></li><li id="t-cite"><a href="/w/index.php?title=Special:CiteThisPage&amp;page=Huffman_coding&amp;id=721855632" title="Information on how to cite this page">Cite this page</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id='p-coll-print_export' aria-labelledby='p-coll-print_export-label'>
+			<h3 id='p-coll-print_export-label'>Print/export</h3>
+
+			<div class="body">
+									<ul>
+						<li id="coll-create_a_book"><a href="/w/index.php?title=Special:Book&amp;bookcmd=book_creator&amp;referer=Huffman+coding">Create a book</a></li><li id="coll-download-as-rdf2latex"><a href="/w/index.php?title=Special:Book&amp;bookcmd=render_article&amp;arttitle=Huffman+coding&amp;returnto=Huffman+coding&amp;oldid=721855632&amp;writer=rdf2latex">Download as PDF</a></li><li id="t-print"><a href="/w/index.php?title=Huffman_coding&amp;printable=yes" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id='p-wikibase-otherprojects' aria-labelledby='p-wikibase-otherprojects-label'>
+			<h3 id='p-wikibase-otherprojects-label'>In other projects</h3>
+
+			<div class="body">
+									<ul>
+						<li class="wb-otherproject-link wb-otherproject-commons"><a href="https://commons.wikimedia.org/wiki/Category:Huffman_coding" hreflang="en">Wikimedia Commons</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id='p-lang' aria-labelledby='p-lang-label'>
+			<h3 id='p-lang-label'>Languages</h3>
+
+			<div class="body">
+									<ul>
+						<li class="interlanguage-link interwiki-ar"><a href="//ar.wikipedia.org/wiki/%D8%AA%D8%B1%D9%85%D9%8A%D8%B2_%D9%87%D9%88%D9%81%D9%85%D8%A7%D9%86" title="ترميز هوفمان – Arabic" lang="ar" hreflang="ar">العربية</a></li><li class="interlanguage-link interwiki-ca"><a href="//ca.wikipedia.org/wiki/Codificaci%C3%B3_de_Huffman" title="Codificació de Huffman – Catalan" lang="ca" hreflang="ca">Català</a></li><li class="interlanguage-link interwiki-cs"><a href="//cs.wikipedia.org/wiki/Huffmanovo_k%C3%B3dov%C3%A1n%C3%AD" title="Huffmanovo kódování – Czech" lang="cs" hreflang="cs">Čeština</a></li><li class="interlanguage-link interwiki-da"><a href="//da.wikipedia.org/wiki/Huffman-kodning" title="Huffman-kodning – Danish" lang="da" hreflang="da">Dansk</a></li><li class="interlanguage-link interwiki-de"><a href="//de.wikipedia.org/wiki/Huffman-Kodierung" title="Huffman-Kodierung – German" lang="de" hreflang="de">Deutsch</a></li><li class="interlanguage-link interwiki-et"><a href="//et.wikipedia.org/wiki/Huffmani_kodeerimine" title="Huffmani kodeerimine – Estonian" lang="et" hreflang="et">Eesti</a></li><li class="interlanguage-link interwiki-el"><a href="//el.wikipedia.org/wiki/%CE%9A%CF%89%CE%B4%CE%B9%CE%BA%CE%BF%CF%80%CE%BF%CE%AF%CE%B7%CF%83%CE%B7_Huffman" title="Κωδικοποίηση Huffman – Greek" lang="el" hreflang="el">Ελληνικά</a></li><li class="interlanguage-link interwiki-es"><a href="//es.wikipedia.org/wiki/Codificaci%C3%B3n_Huffman" title="Codificación Huffman – Spanish" lang="es" hreflang="es">Español</a></li><li class="interlanguage-link interwiki-fa"><a href="//fa.wikipedia.org/wiki/%DA%A9%D8%AF%DA%AF%D8%B0%D8%A7%D8%B1%DB%8C_%D9%87%D8%A7%D9%81%D9%85%D9%86" title="کدگذاری هافمن – Persian" lang="fa" hreflang="fa">فارسی</a></li><li class="interlanguage-link interwiki-fr"><a href="//fr.wikipedia.org/wiki/Codage_de_Huffman" title="Codage de Huffman – French" lang="fr" hreflang="fr">Français</a></li><li class="interlanguage-link interwiki-ko"><a href="//ko.wikipedia.org/wiki/%ED%97%88%ED%94%84%EB%A7%8C_%EB%B6%80%ED%98%B8%ED%99%94" title="허프만 부호화 – Korean" lang="ko" hreflang="ko">한국어</a></li><li class="interlanguage-link interwiki-it"><a href="//it.wikipedia.org/wiki/Codifica_di_Huffman" title="Codifica di Huffman – Italian" lang="it" hreflang="it">Italiano</a></li><li class="interlanguage-link interwiki-he"><a href="//he.wikipedia.org/wiki/%D7%A7%D7%95%D7%93_%D7%94%D7%90%D7%A4%D7%9E%D7%9F" title="קוד האפמן – Hebrew" lang="he" hreflang="he">עברית</a></li><li class="interlanguage-link interwiki-ka"><a href="//ka.wikipedia.org/wiki/%E1%83%B0%E1%83%90%E1%83%A4%E1%83%9B%E1%83%94%E1%83%9C%E1%83%98%E1%83%A1_%E1%83%99%E1%83%9D%E1%83%93%E1%83%98" title="ჰაფმენის კოდი – Georgian" lang="ka" hreflang="ka">ქართული</a></li><li class="interlanguage-link interwiki-hu"><a href="//hu.wikipedia.org/wiki/Huffman-k%C3%B3dol%C3%A1s" title="Huffman-kódolás – Hungarian" lang="hu" hreflang="hu">Magyar</a></li><li class="interlanguage-link interwiki-nl"><a href="//nl.wikipedia.org/wiki/Huffmancodering" title="Huffmancodering – Dutch" lang="nl" hreflang="nl">Nederlands</a></li><li class="interlanguage-link interwiki-ja"><a href="//ja.wikipedia.org/wiki/%E3%83%8F%E3%83%95%E3%83%9E%E3%83%B3%E7%AC%A6%E5%8F%B7" title="ハフマン符号 – Japanese" lang="ja" hreflang="ja">日本語</a></li><li class="interlanguage-link interwiki-no"><a href="//no.wikipedia.org/wiki/Huffman-koding" title="Huffman-koding – Norwegian" lang="no" hreflang="no">Norsk bokmål</a></li><li class="interlanguage-link interwiki-pl"><a href="//pl.wikipedia.org/wiki/Kodowanie_Huffmana" title="Kodowanie Huffmana – Polish" lang="pl" hreflang="pl">Polski</a></li><li class="interlanguage-link interwiki-pt"><a href="//pt.wikipedia.org/wiki/Codifica%C3%A7%C3%A3o_de_Huffman" title="Codificação de Huffman – Portuguese" lang="pt" hreflang="pt">Português</a></li><li class="interlanguage-link interwiki-ru"><a href="//ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%B4_%D0%A5%D0%B0%D1%84%D1%84%D0%BC%D0%B0%D0%BD%D0%B0" title="Код Хаффмана – Russian" lang="ru" hreflang="ru">Русский</a></li><li class="interlanguage-link interwiki-sr"><a href="//sr.wikipedia.org/wiki/%D0%A5%D0%B0%D1%84%D0%BC%D0%B0%D0%BD%D0%BE%D0%B2%D0%B8_%D0%BA%D0%BE%D0%B4%D0%BE%D0%B2%D0%B8" title="Хафманови кодови – Serbian" lang="sr" hreflang="sr">Српски / srpski</a></li><li class="interlanguage-link interwiki-fi"><a href="//fi.wikipedia.org/wiki/Huffmanin_koodaus" title="Huffmanin koodaus – Finnish" lang="fi" hreflang="fi">Suomi</a></li><li class="interlanguage-link interwiki-sv"><a href="//sv.wikipedia.org/wiki/Huffmankodning" title="Huffmankodning – Swedish" lang="sv" hreflang="sv">Svenska</a></li><li class="interlanguage-link interwiki-th"><a href="//th.wikipedia.org/wiki/%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%80%E0%B8%82%E0%B9%89%E0%B8%B2%E0%B8%A3%E0%B8%AB%E0%B8%B1%E0%B8%AA%E0%B8%AE%E0%B8%B1%E0%B8%9F%E0%B8%9F%E0%B9%8C%E0%B9%81%E0%B8%A1%E0%B8%99" title="การเข้ารหัสฮัฟฟ์แมน – Thai" lang="th" hreflang="th">ไทย</a></li><li class="interlanguage-link interwiki-tr"><a href="//tr.wikipedia.org/wiki/Huffman_kodu" title="Huffman kodu – Turkish" lang="tr" hreflang="tr">Türkçe</a></li><li class="interlanguage-link interwiki-uk"><a href="//uk.wikipedia.org/wiki/%D0%9A%D0%BE%D0%B4_%D0%A5%D0%B0%D1%84%D1%84%D0%BC%D0%B0%D0%BD%D0%B0" title="Код Хаффмана – Ukrainian" lang="uk" hreflang="uk">Українська</a></li><li class="interlanguage-link interwiki-vi"><a href="//vi.wikipedia.org/wiki/M%C3%A3_h%C3%B3a_Huffman" title="Mã hóa Huffman – Vietnamese" lang="vi" hreflang="vi">Tiếng Việt</a></li><li class="interlanguage-link interwiki-zh"><a href="//zh.wikipedia.org/wiki/%E9%9C%8D%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81" title="霍夫曼编码 – Chinese" lang="zh" hreflang="zh">中文</a></li><li class="uls-p-lang-dummy"><a href="#"></a></li>					</ul>
+				<div class='after-portlet after-portlet-lang'><span class="wb-langlinks-edit wb-langlinks-link"><a href="https://www.wikidata.org/wiki/Q2647#sitelinks-wikipedia" title="Edit interlanguage links" class="wbc-editpage">Edit links</a></span></div>			</div>
+		</div>
+				</div>
+		</div>
+		<div id="footer" role="contentinfo">
+							<ul id="footer-info">
+											<li id="footer-info-lastmod"> This page was last modified on 24 May 2016, at 13:23.</li>
+											<li id="footer-info-copyright">Text is available under the <a rel="license" href="//en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License">Creative Commons Attribution-ShareAlike License</a><a rel="license" href="//creativecommons.org/licenses/by-sa/3.0/" style="display:none;"></a>;
+additional terms may apply.  By using this site, you agree to the <a href="//wikimediafoundation.org/wiki/Terms_of_Use">Terms of Use</a> and <a href="//wikimediafoundation.org/wiki/Privacy_policy">Privacy Policy</a>. Wikipedia® is a registered trademark of the <a href="//www.wikimediafoundation.org/">Wikimedia Foundation, Inc.</a>, a non-profit organization.</li>
+									</ul>
+							<ul id="footer-places">
+											<li id="footer-places-privacy"><a href="//wikimediafoundation.org/wiki/Privacy_policy" class="extiw" title="wmf:Privacy policy">Privacy policy</a></li>
+											<li id="footer-places-about"><a href="/wiki/Wikipedia:About" title="Wikipedia:About">About Wikipedia</a></li>
+											<li id="footer-places-disclaimer"><a href="/wiki/Wikipedia:General_disclaimer" title="Wikipedia:General disclaimer">Disclaimers</a></li>
+											<li id="footer-places-contact"><a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us">Contact Wikipedia</a></li>
+											<li id="footer-places-developers"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/How_to_contribute">Developers</a></li>
+											<li id="footer-places-cookiestatement"><a href="//wikimediafoundation.org/wiki/Cookie_statement">Cookie statement</a></li>
+											<li id="footer-places-mobileview"><a href="//en.m.wikipedia.org/w/index.php?title=Huffman_coding&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li>
+									</ul>
+										<ul id="footer-icons" class="noprint">
+											<li id="footer-copyrightico">
+							<a href="https://wikimediafoundation.org/"><img src="/static/images/wikimedia-button.png" srcset="/static/images/wikimedia-button-1.5x.png 1.5x, /static/images/wikimedia-button-2x.png 2x" width="88" height="31" alt="Wikimedia Foundation"/></a>						</li>
+											<li id="footer-poweredbyico">
+							<a href="//www.mediawiki.org/"><img src="/w/resources/assets/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/w/resources/assets/poweredby_mediawiki_132x47.png 1.5x, /w/resources/assets/poweredby_mediawiki_176x62.png 2x" width="88" height="31"/></a>						</li>
+									</ul>
+						<div style="clear:both"></div>
+		</div>
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.state({"ext.globalCssJs.site":"ready","ext.globalCssJs.user":"ready","user":"ready","user.groups":"ready"});mw.loader.load(["ext.cite.a11y","ext.math.scripts","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.eventLogging.subscriber","ext.gadget.teahouse","ext.gadget.ReferenceTooltips","ext.gadget.DRN-wizard","ext.gadget.charinsert","ext.gadget.refToolbar","ext.gadget.switcher","ext.gadget.featured-articles-links","mmv.bootstrap.autostart","ext.visualEditor.targetLoader","ext.wikimediaEvents","ext.navigationTiming","schema.UniversalLanguageSelector","ext.uls.eventlogger","ext.uls.interlanguage"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":68,"wgHostname":"mw1256"});});</script>
+	</body>
+</html>
