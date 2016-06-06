@@ -7,6 +7,7 @@ Options for creating Huffman Readers and Writers.
 package hufio
 
 // Options wraps options for creating Huffman Readers and Writers.
+// Zero value for a field means to use the default value for that field.
 type Options struct {
 
 	// WinSize specifies the size of the sliding window that is used to manage

@@ -13,7 +13,26 @@ func init() {
 	rand.Seed(time.Now().UnixNano())
 }
 
-const dataSize = 30000
+const dataSize = 9000
+
+func TestOptions(t *testing.T) {
+	data := []byte("testing, testing ttttttttttttt")
+	cases := []struct {
+		name string
+		data []byte
+		o    *Options
+	}{
+		{"Options Default", data, &Options{}},
+		{"Options nil", data, nil},
+		{"Options [WinSize= 3]", data, &Options{WinSize: 3}},
+		{"Options [WinSize= 1]", data, &Options{WinSize: 1}},
+		{"Options [WinSize=-1]", data, &Options{WinSize: -1}},
+	}
+
+	for _, v := range cases {
+		testWriteAndRead(v.name, v.data, t, v.o)
+	}
+}
 
 func TestRandomDigits(t *testing.T) {
 	data := make([]byte, dataSize)
@@ -53,9 +72,15 @@ func TestFiles(t *testing.T) {
 	}
 }
 
-func testWriteAndRead(testCase string, data []byte, t *testing.T) {
+func testWriteAndRead(testCase string, data []byte, t *testing.T, os ...*Options) {
 	buf := &bytes.Buffer{}
-	w := NewWriter(buf)
+
+	var w Writer
+	if len(os) > 0 {
+		w = NewWriterOptions(buf, os[0])
+	} else {
+		w = NewWriter(buf)
+	}
 	if _, err := w.Write(data); err != nil {
 		t.Error("Failed to write:", err)
 	}
@@ -63,10 +88,15 @@ func testWriteAndRead(testCase string, data []byte, t *testing.T) {
 		t.Error("Failed to close:", err)
 	}
 	outs := len(buf.Bytes())
-	fmt.Printf("%25s: Writer Input: %6d bytes, Output: %6d, ratio: %6.2f %%, %.2f bit/symbol\n",
+	fmt.Printf("%-22s: Writer Input: %6d bytes, Output: %6d, ratio: %6.2f %%, %.2f bit/symbol\n",
 		testCase, len(data), outs, float64(outs)/float64(len(data))*100, float64(outs)*8.0/float64(len(data)))
 
-	r := NewReader(bytes.NewReader(buf.Bytes()))
+	var r Reader
+	if len(os) > 0 {
+		r = NewReaderOptions(bytes.NewReader(buf.Bytes()), os[0])
+	} else {
+		r = NewReader(bytes.NewReader(buf.Bytes()))
+	}
 	data2, err := ioutil.ReadAll(r)
 	if err != nil {
 		t.Error("Can't decode:", err)
