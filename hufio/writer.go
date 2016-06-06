@@ -33,9 +33,21 @@ type writer struct {
 	bw bitio.Writer
 }
 
-// NewWriter returns a new Writer using the specified io.Writer as the output.
+// NewWriter returns a new Writer using the specified io.Writer as the output,
+// with the default Options.
 func NewWriter(out io.Writer) Writer {
-	return &writer{symbols: newSymbols(), bw: bitio.NewWriter(out)}
+	return NewWriterOptions(out, nil)
+}
+
+// NewWriterOptions returns a new Writer using the specified io.Writer as the output,
+// with the specified Options.
+//
+// Note: Options are not transmitted automatically! The Reader will only be able to properly decode the stream
+// created by a Writer if the same Options is used both at the Reader and Writer.
+// Transmitting the Options has to be done manually if needed.
+func NewWriterOptions(out io.Writer, o *Options) Writer {
+	o = checkOptions(o)
+	return &writer{symbols: newSymbols(o), bw: bitio.NewWriter(out)}
 }
 
 // Write implements io.Writer.

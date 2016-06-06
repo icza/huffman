@@ -28,9 +28,21 @@ type reader struct {
 	br bitio.Reader
 }
 
-// NewReader returns a new Reader using the specified io.Reader as the input (source).
+// NewReader returns a new Reader using the specified io.Reader as the input (source),
+// with the default Options.
 func NewReader(in io.Reader) Reader {
-	return &reader{symbols: newSymbols(), br: bitio.NewReader(in)}
+	return NewReaderOptions(in, nil)
+}
+
+// NewReaderOptions returns a new Reader using the specified io.Reader as the input (source)
+// with the specified Options.
+//
+// Note: Options are not transmitted automatically! The Reader will only be able to properly decode the stream
+// created by a Writer if the same Options is used both at the Reader and Writer.
+// Transmitting the Options has to be done manually if needed.
+func NewReaderOptions(in io.Reader, o *Options) Reader {
+	o = checkOptions(o)
+	return &reader{symbols: newSymbols(o), br: bitio.NewReader(in)}
 }
 
 // Read implements io.Reader.
