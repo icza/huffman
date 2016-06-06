@@ -8,7 +8,26 @@ the original data based on that.
 
 The implementation uses a sliding window which is used to manage the symbol table.
 The sliding window is optional, that is, if no window is used, the symbol table is calculated based on
-all previous / encountered symbols.
+all previously encountered symbols.
+
+Writer + Reader example:
+
+	buf := &bytes.Buffer{}
+	w := NewWriter(buf)
+	if _, err := w.Write([]byte("Testing Huffman Writer + Reader.")); err != nil {
+		log.Panicln("Failed to write:", err)
+	}
+	if err := w.Close(); err != nil {
+		log.Panicln("Failed to close:", err)
+	}
+
+	r := NewReader(bytes.NewReader(buf.Bytes()))
+	if data, err := ioutil.ReadAll(r); err != nil {
+		log.Panicln("Can't decode:", err)
+	} else {
+		log.Println("Decoded:", string(data))
+	}
+
 
 */
 package hufio

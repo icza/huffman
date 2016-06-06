@@ -14,7 +14,7 @@ type Options struct {
 	// the symbol table.
 	// 0 means to use a sliding window with the default size (2048 bytes / symbols).
 	// Negative values mean not to use a sliding window, that is, symbol table is
-	// calculated based on all previous (encountered) symbols.
+	// calculated based on all previously encountered symbols.
 	WinSize int
 }
 
