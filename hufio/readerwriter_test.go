@@ -99,7 +99,7 @@ func testWriteAndRead(testCase string, data []byte, t *testing.T, os ...*Options
 	}
 	data2, err := ioutil.ReadAll(r)
 	if err != nil {
-		t.Error("Can't decode:", err)
+		t.Error("Failed to read:", err)
 	}
 	if !bytes.Equal(data, data2) {
 		t.Error("Decoded doesn't match original!", len(data2))

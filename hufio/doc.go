@@ -23,9 +23,9 @@ Writer + Reader example:
 
 	r := NewReader(bytes.NewReader(buf.Bytes()))
 	if data, err := ioutil.ReadAll(r); err != nil {
-		log.Panicln("Can't decode:", err)
+		log.Panicln("Failed to read:", err)
 	} else {
-		log.Println("Decoded:", string(data))
+		log.Println("Read:", string(data))
 	}
 
 
