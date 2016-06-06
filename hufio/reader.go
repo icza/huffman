@@ -37,7 +37,7 @@ func NewReader(in io.Reader) Reader {
 // NewReaderOptions returns a new Reader using the specified io.Reader as the input (source)
 // with the specified Options.
 //
-// Note: Options are not transmitted automatically! The Reader will only be able to properly decode the stream
+// Note: Options are not transmitted internally! The Reader will only be able to properly decode the stream
 // created by a Writer if the same Options is used both at the Reader and Writer.
 // Transmitting the Options has to be done manually if needed.
 func NewReaderOptions(in io.Reader, o *Options) Reader {
