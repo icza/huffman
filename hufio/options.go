@@ -6,12 +6,13 @@ Options for creating Huffman Readers and Writers.
 
 package hufio
 
-// Options wraps options for creating Huffman Readers and Writers
+// Options wraps options for creating Huffman Readers and Writers.
 type Options struct {
 
-	// WinSize specifies the size of a sliding window that is used to manage the symbol table.
+	// WinSize specifies the size of the sliding window that is used to manage the symbol table.
 	// 0 means to use a sliding window with the default size (2048 bytes / symbols).
-	// Negative values mean not to use a sliding window: that is symbol table is calculated based on all previus symbols.
+	// Negative values mean not to use a sliding window: that is, symbol table is calculated
+	// based on all previous (encountered) symbols.
 	WinSize int
 }
 

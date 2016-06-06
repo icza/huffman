@@ -42,3 +42,6 @@ This `Reader` and `Writer` internally manages a Symbol Table (the frequency of e
 The `Writer` computes and sends the Huffman code of the data, the `Reader` receives the Huffman code and "reconstructs"
 the original data based on that.
 
+The implementation uses a _sliding window_ which is used to manage the symbol table.
+The sliding window is optional, that is, if no window is used, the symbol table is calculated based on
+all previous / encountered symbols.

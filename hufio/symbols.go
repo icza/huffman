@@ -18,7 +18,7 @@ const (
 	maxValues   = 256 + extraValues                    // Max values: number of bytes + extra values
 )
 
-// win is a window buffer, the base of the symbol table.
+// win is a sliding window buffer, the base of the symbol table.
 type win struct {
 	buf    []huffman.ValueType // Content of the window buffer
 	pos    int                 // Position in the buffer
