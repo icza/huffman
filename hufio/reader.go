@@ -7,9 +7,10 @@ Huffman code Reader implementation.
 package hufio
 
 import (
+	"io"
+
 	"github.com/icza/bitio"
 	"github.com/icza/huffman"
-	"io"
 )
 
 // Reader is the Huffman reader interface.

@@ -21,15 +21,15 @@ type Options struct {
 // checkOptions returns a new Options where "missing" fields (with zero value) are set to default values.
 // The passed options is not modified.
 // It is allowed to pass nil, which is treated as the zero value of Options.
-func checkOptions(o_ *Options) *Options {
-	o := new(Options)
-	if o_ != nil {
-		*o = *o_
+func checkOptions(o *Options) *Options {
+	o2 := new(Options)
+	if o != nil {
+		*o2 = *o
 	}
 
-	if o.WinSize == 0 {
-		o.WinSize = 2048
+	if o2.WinSize == 0 {
+		o2.WinSize = 2048
 	}
 
-	return o
+	return o2
 }
