@@ -1,6 +1,9 @@
 # huffman
 
-[![GoDoc](https://godoc.org/github.com/icza/huffman?status.svg)](https://godoc.org/github.com/icza/huffman) [![Build Status](https://travis-ci.org/icza/huffman.svg?branch=master)](https://travis-ci.org/icza/huffman)
+[![Build Status](https://travis-ci.org/icza/huffman.svg?branch=master)](https://travis-ci.org/icza/huffman)
+[![GoDoc](https://godoc.org/github.com/icza/huffman?status.svg)](https://godoc.org/github.com/icza/huffman)
+[![Go Report Card](https://goreportcard.com/badge/github.com/icza/huffman)](https://goreportcard.com/report/github.com/icza/huffman)
+[![codecov](https://codecov.io/gh/icza/huffman/branch/master/graph/badge.svg)](https://codecov.io/gh/icza/huffman)
 
 [Huffman coding](https://en.wikipedia.org/wiki/Huffman_coding) implementation in Go
 (Huffman tree, Symbol table, Huffman Reader + Writer).
