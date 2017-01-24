@@ -38,10 +38,10 @@ import (
 	"strconv"
 )
 
-// Type of the value stored in a Node.
+// ValueType is the type of the value stored in a Node.
 type ValueType int32
 
-// A node in the Huffman tree.
+// Node in the Huffman tree.
 type Node struct {
 	Parent *Node     // Optional parent node, for fast code read-out
 	Left   *Node     // Optional left node
@@ -63,7 +63,7 @@ func (n *Node) Code() (r uint64, bits byte) {
 	return
 }
 
-// Slice of *Node that implements sort.Interface, order defined by Node.Count.
+// SortNodes implements sort.Interface, order defined by Node.Count.
 type SortNodes []*Node
 
 func (sn SortNodes) Len() int           { return len(sn) }
