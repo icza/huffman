@@ -57,4 +57,27 @@ func TestBuild2(t *testing.T) {
 		t.Errorf("Got: %v, want: not nil", root)
 	}
 	Print(root)
+
+	type code struct {
+		r    uint64
+		bits byte
+	}
+
+	expected := map[ValueType]code{
+		'a': {0x0, 1},  // 0
+		'm': {0x04, 3}, // 100
+		'l': {0x0a, 4}, // 1010
+		'f': {0x0b, 4}, // 1011
+		't': {0x06, 3}, // 110
+		' ': {0x07, 3}, // 111
+	}
+	for _, leave := range leaves {
+		if leave.Left != nil {
+			continue // Not leaf
+		}
+		r, bits := leave.Code()
+		if exp, got := (code{r, bits}), expected[leave.Value]; exp != got {
+			t.Errorf("Got: %v, want: %v (leave: '%c')", got, exp, leave.Value)
+		}
+	}
 }
