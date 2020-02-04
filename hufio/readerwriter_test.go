@@ -77,7 +77,7 @@ func TestFiles(t *testing.T) {
 func testWriteAndRead(testCase string, data []byte, t *testing.T, os ...*Options) {
 	buf := &bytes.Buffer{}
 
-	var w Writer
+	var w *Writer
 	if len(os) > 0 {
 		w = NewWriterOptions(buf, os[0])
 	} else {
@@ -93,7 +93,7 @@ func testWriteAndRead(testCase string, data []byte, t *testing.T, os ...*Options
 	fmt.Printf("%-22s: Writer Input: %6d bytes, Output: %6d, ratio: %6.2f %%, %.2f bit/symbol\n",
 		testCase, len(data), outs, float64(outs)/float64(len(data))*100, float64(outs)*8.0/float64(len(data)))
 
-	var r Reader
+	var r *Reader
 	if len(os) > 0 {
 		r = NewReaderOptions(bytes.NewReader(buf.Bytes()), os[0])
 	} else {
@@ -134,49 +134,5 @@ func TestReaderError(t *testing.T) {
 		if _, err := io.ReadFull(r, make([]byte, len(c.data)+1)); err == nil {
 			t.Error("Expected error but succeeded.")
 		}
-	}
-}
-
-type errWriter struct {
-	bitsErr, bytesErr error
-}
-
-func (w *errWriter) WriteBool(b bool) (err error)           { return }
-func (w *errWriter) Align() (skipped byte, err error)       { return }
-func (w *errWriter) Write(p []byte) (n int, err error)      { return }
-func (w *errWriter) Close() (err error)                     { return }
-func (w *errWriter) WriteByte(b byte) (err error)           { return w.bytesErr }
-func (w *errWriter) WriteBits(r uint64, n byte) (err error) { return w.bitsErr }
-
-func TestWriterError(t *testing.T) {
-	w := NewWriter(nil)
-
-	// "Put" 'b' into the writer (so it won't be a new symbol):
-	w.(*writer).bw = &errWriter{}
-	if err := w.WriteByte('b'); err != nil {
-		panic(err)
-	}
-
-	te := errors.New("Intetional testing error")
-
-	cases := []struct {
-		bitsErr, bytesErr error
-		symbol            byte
-	}{
-		{te, nil, 'a'}, // Cover 1st w.bw.WriteBits() in WriteByte
-		{nil, te, 'a'}, // Cover w.bw.WriteByte() in WriteByte
-		{te, nil, 'b'}, // Cover 2nd w.bw.WriteBits() in WriteByte
-	}
-
-	for _, c := range cases {
-		w.(*writer).bw = &errWriter{c.bitsErr, c.bytesErr}
-		if _, err := w.Write([]byte{c.symbol}); err == nil {
-			t.Error("Expected error but succeeded.")
-		}
-	}
-
-	w.(*writer).bw = &errWriter{bitsErr: te}
-	if err := w.Close(); err == nil {
-		t.Error("Expected error but succeeded.")
 	}
 }

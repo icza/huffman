@@ -13,25 +13,16 @@ import (
 	"github.com/icza/huffman"
 )
 
-// Reader is the Huffman reader interface.
-type Reader interface {
-	// Reader is an io.Reader
-	// Read decompresses up to len(p) bytes from the source.
-	io.Reader
-
-	// Reader is also an io.ByteReader.
-	io.ByteReader
-}
-
-// reader is the Huffman reader implementation.
-type reader struct {
+// Reader is the Huffman reader implementation.
+// It also implements io.ByteReader.
+type Reader struct {
 	*symbols
-	br bitio.Reader
+	br *bitio.Reader
 }
 
 // NewReader returns a new Reader using the specified io.Reader as the input (source),
 // with the default Options.
-func NewReader(in io.Reader) Reader {
+func NewReader(in io.Reader) *Reader {
 	return NewReaderOptions(in, nil)
 }
 
@@ -41,13 +32,13 @@ func NewReader(in io.Reader) Reader {
 // Note: Options are not transmitted internally! The Reader will only be able to properly decode the stream
 // created by a Writer if the same Options is used both at the Reader and Writer.
 // Transmitting the Options has to be done manually if needed.
-func NewReaderOptions(in io.Reader, o *Options) Reader {
+func NewReaderOptions(in io.Reader, o *Options) *Reader {
 	o = checkOptions(o)
-	return &reader{symbols: newSymbols(o), br: bitio.NewReader(in)}
+	return &Reader{symbols: newSymbols(o), br: bitio.NewReader(in)}
 }
 
-// Read implements io.Reader.
-func (r *reader) Read(p []byte) (n int, err error) {
+// Read decompresses up to len(p) bytes from the source.
+func (r *Reader) Read(p []byte) (n int, err error) {
 	for i := range p {
 		if p[i], err = r.ReadByte(); err != nil {
 			return i, err
@@ -56,8 +47,8 @@ func (r *reader) Read(p []byte) (n int, err error) {
 	return len(p), nil
 }
 
-// ReadByte implements io.ByteReader.
-func (r *reader) ReadByte() (b byte, err error) {
+// ReadByte decompresses a single byte.
+func (r *Reader) ReadByte() (b byte, err error) {
 	// Read Huffman code
 	br := r.br
 	node := r.root
